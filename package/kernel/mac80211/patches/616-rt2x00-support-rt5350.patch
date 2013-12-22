@@ -58,7 +58,7 @@
  	case RF5360:
  	case RF5370:
  	case RF5372:
-@@ -4671,6 +4682,8 @@ static int rt2800_init_registers(struct 
+@@ -4671,6 +4682,8 @@ static int rt2800_init_registers(struct
  		rt2800_register_write(rt2x00dev, TX_SW_CFG0, 0x00000404);
  		rt2800_register_write(rt2x00dev, TX_SW_CFG1, 0x00080606);
  		rt2800_register_write(rt2x00dev, TX_SW_CFG2, 0x00000000);
@@ -67,7 +67,7 @@
  	} else {
  		rt2800_register_write(rt2x00dev, TX_SW_CFG0, 0x00000000);
  		rt2800_register_write(rt2x00dev, TX_SW_CFG1, 0x00080606);
-@@ -5312,9 +5325,13 @@ static void rt2800_init_bbp_3352(struct 
+@@ -5312,9 +5325,13 @@ static void rt2800_init_bbp_3352(struct
  
  	rt2800_bbp_write(rt2x00dev, 82, 0x62);
  
@@ -84,7 +84,7 @@
  
  	rt2800_bbp_write(rt2x00dev, 86, 0x38);
  
-@@ -5328,9 +5345,13 @@ static void rt2800_init_bbp_3352(struct 
+@@ -5328,9 +5345,13 @@ static void rt2800_init_bbp_3352(struct
  
  	rt2800_bbp_write(rt2x00dev, 104, 0x92);
  
@@ -101,7 +101,7 @@
  
  	rt2800_bbp_write(rt2x00dev, 120, 0x50);
  
-@@ -5355,6 +5376,13 @@ static void rt2800_init_bbp_3352(struct 
+@@ -5355,6 +5376,13 @@ static void rt2800_init_bbp_3352(struct
  	rt2800_bbp_write(rt2x00dev, 143, 0xa2);
  
  	rt2800_bbp_write(rt2x00dev, 148, 0xc8);
