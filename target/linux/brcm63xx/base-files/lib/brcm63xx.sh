@@ -66,6 +66,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"96368M-1541N")
+			board_model="Comtrend VR-3025u"
+			status_led="VR-3025u:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"AW4139" |\
 		"AW4339U")
 			board_model="DSL-274XB"
