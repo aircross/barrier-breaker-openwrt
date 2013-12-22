@@ -10,7 +10,7 @@ define AddDepends/crc16
 endef
 
 define AddDepends/hid
-  DEPENDS+= +kmod-hid $(1)
+  DEPENDS+= +kmod-hid +kmod-hid-generic $(1)
 endef
 
 define AddDepends/input
