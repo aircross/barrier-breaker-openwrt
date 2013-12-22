@@ -1,5 +1,5 @@
 src-git packages git://github.com/openwrt-es/barrier-breaker-openwrt-packages.git;packages_13.12
-src-svn xwrt git://github.com/openwrt-es/barrier-breaker-openwrt-xwrt.git;xwrt_13.12
+src-git xwrt git://github.com/openwrt-es/barrier-breaker-openwrt-xwrt.git;xwrt_13.12
 src-git luci git://github.com/openwrt-es/barrier-breaker-openwrt-luci.git;luci_13.12
 src-git routing git://github.com/openwrt-es/barrier-breaker-openwrt-routing.git;routing_13.12
 src-git telephony git://github.com/openwrt-es/barrier-breaker-openwrt-telephony.git;telephony_13.12
