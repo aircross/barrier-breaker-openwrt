@@ -778,60 +778,6 @@ static struct board_info __initdata board_rta1320_16m = {
 		},
 	},
 };
-
-// Actually this board is the very same as the rta770bw,
-// where the additional 'b' within the name just
-// just indicates 'Annex B'. The ADSL Modem itself is able
-// to handle both Annex A as well as Annex B -
-// the loaded firmware makes the only difference
-static struct board_info __initdata board_rta770w = {
-	.name				= "RTA770W",
-	.expected_cpu_id		= 0x6345,
-
-	.has_uart0			= 1,
-
-	.has_enet0			= 1,
-
-	.enet0 = {
-		.has_phy		= 1,
-		.phy_id			= 0,
-		.force_speed_100	= 1,
-		.force_duplex_full	= 1,
-	},
-
-	.leds = {
-		{
-			.name		= "RTA770W:green:usb",
-			.gpio		= 7,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA770W:green:adsl",
-			.gpio		= 8,
-		},
-		{
-			.name		= "RTA770W:green:diag",
-			.gpio		= 10,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA770W:green:wlan",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 13,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
-};
 #endif
 
 /*
@@ -877,6 +823,55 @@ static struct board_info __initdata board_rta770bw = {
 		},
 		{
 			.name		= "RTA770BW:green:wlan",
+			.gpio		= 11,
+			.active_low	= 1,
+		},
+	},
+
+	.buttons = {
+		{
+			.desc		= "reset",
+			.gpio		= 13,
+			.type		= EV_KEY,
+			.code		= KEY_RESTART,
+			.active_low	= 1,
+			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+	},
+};
+
+static struct board_info __initdata board_rta770w = {
+	.name				= "RTA770W",
+	.expected_cpu_id		= 0x6345,
+
+	.has_uart0			= 1,
+
+	.has_enet0			= 1,
+
+	.enet0 = {
+		.has_phy		= 1,
+		.phy_id			= 0,
+		.force_speed_100	= 1,
+		.force_duplex_full	= 1,
+	},
+
+	.leds = {
+		{
+			.name		= "RTA770W:green:usb",
+			.gpio		= 7,
+			.active_low	= 1,
+		},
+		{
+			.name		= "RTA770W:green:adsl",
+			.gpio		= 8,
+		},
+		{
+			.name		= "RTA770W:green:diag",
+			.gpio		= 10,
+			.active_low	= 1,
+		},
+		{
+			.name		= "RTA770W:green:wlan",
 			.gpio		= 11,
 			.active_low	= 1,
 		},
