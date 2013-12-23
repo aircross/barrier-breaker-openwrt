@@ -339,6 +339,10 @@ void __init bcm63xx_cpu_init(void)
 	bcm63xx_cpu_id = (tmp & REV_CHIPID_MASK) >> REV_CHIPID_SHIFT;
 	bcm63xx_cpu_rev = (tmp & REV_REVID_MASK) >> REV_REVID_SHIFT;
 
+	/* Properly detect certain CPUs */
+	if (bcm63xx_cpu_id != BCM6345_CPU_ID)
+		bcm63xx_cpu_id &= ~1;
+
 	switch (bcm63xx_cpu_id) {
 	case BCM3368_CPU_ID:
 		bcm63xx_regs_base = bcm3368_regs_base;
