@@ -95,6 +95,7 @@ brcm63xx_detect() {
 			status_led="WAP-5813n:green:power"
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
+			;;
 		"AW4139" |\
 		"AW4339U")
 			board_model="DSL-274XB"
