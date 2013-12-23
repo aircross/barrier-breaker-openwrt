@@ -27,13 +27,13 @@ brcm63xx_detect() {
 			;;
 		"96328A-1241N")
 			board_model="Comtrend AR-5381u"
-			status_led="96328A-1241N:green:power"
+			status_led="AR-5381u:green:power"
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
 		"96328A-1441N1")
 			board_model="Comtrend AR-5387un"
-			status_led="96328A-1441N1:green:power"
+			status_led="AR-5387un:green:power"
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
@@ -43,8 +43,14 @@ brcm63xx_detect() {
 			ifname="eth0"
 			;;
 		"963281T_TEF")
-			board_model="ADB P.DG A4001N1"
-			status_led="963281T_TEF:green:power"
+			board_model="ADB P.DG A4001N"
+			status_led="A4001N:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
+		"96348A-122")
+			board_model="Comtrend CT-5365"
+			status_led="CT-5365:green:power"
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
@@ -119,6 +125,12 @@ brcm63xx_detect() {
 			status_led2="GW6200:green:tel"
 			brcm63xx_has_reset_button="true"
 			ifname="eth1"
+			;;
+		"HW553")
+			board_model="Huawei HG553"
+			status_led="HW553:blue:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
 			;;
 		"HW556"*)
 			board_model="Huawei HG556a"
