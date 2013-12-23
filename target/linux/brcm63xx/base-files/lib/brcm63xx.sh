@@ -84,6 +84,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"96368VVW")
+			board_model="ZyXEL P870HW-51a v2"
+			status_led="P870HW-51a:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"96369R-1231N")
 			board_model="Comtrend WAP-5813n"
 			status_led="WAP-5813n:green:power"

@@ -436,10 +436,14 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
   define Image/Build/Profile/VR3025UN
 	$(call Image/Build/CFE,$(1),96368M-1341N,6368,VR-3025un,,--pad 4)
   endef
-
   # Comtrend WAP-5813n
   define Image/Build/Profile/WAP5813N
 	$(call Image/Build/CFE,$(1),96369R-1231N,6368,WAP-5813n,,--pad 4)
+  endef
+
+  # ZyXEL P870HW-51a v2
+  define Image/Build/Profile/P870HW51AV2
+	$(call Image/Build/CFE,$(1),96368VVW,6368,P870HW-51av2)
   endef
 endif
 
