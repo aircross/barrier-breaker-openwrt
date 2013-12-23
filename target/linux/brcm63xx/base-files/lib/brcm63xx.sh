@@ -84,6 +84,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"96368MVWG_hg622"
+			board_model="Huawei HG622"
+			status_led="HG622:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"96368VVW")
 			board_model="ZyXEL P870HW-51a v2"
 			status_led="P870HW-51a:green:power"
