@@ -3188,16 +3188,6 @@ static struct board_info __initdata board_HW556 = {
 
 	.leds = {
 		{
-			.name			= "HW556:red:message",
-			.gpio			= 0,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:hspa",
-			.gpio			= 1,
-			.active_low		= 1,
-		},
-		{
 			.name			= "HW556:red:dsl",
 			.gpio			= 2,
 			.active_low		= 1,

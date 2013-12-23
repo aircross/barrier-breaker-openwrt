@@ -1,0 +1,18 @@
+#!/bin/sh
+# Copyright (C) 2013 OpenWrt.org
+
+. /lib/functions/uci-defaults.sh
+. /lib/brcm63xx.sh
+
+case "$board_name" in
+"HW553")
+	ucidef_set_led_netdev "lan" "LAN" "HW553:blue:lan" "eth0"
+	;;
+"HW556"*)
+	ucidef_set_led_netdev "lan" "LAN" "HW556:red:dsl" "eth0"
+	;;
+esac
+
+ucidef_commit_leds
+
+exit 0
