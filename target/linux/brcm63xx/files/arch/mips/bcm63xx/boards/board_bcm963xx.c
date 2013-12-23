@@ -3896,7 +3896,7 @@ static struct board_info __initdata board_HG622 = {
 				.used		= 1,
 				.phy_id		= 1,
 				.name		= "port1",
-			}
+			},
 			[1] = {
 				.used		= 1,
 				.phy_id		= 2,
