@@ -1,6 +1,6 @@
 define Profile/DSL2650U
   NAME:=D-Link DSL-2650U
-  PACKAGES:=kmod-brcm-wl kmod-usb-core kmod-usb-ohci kmod-usb2 wlc
+  PACKAGES:=
 endef
 define Profile/DSL2650U/Description
 	Package set for the DSL-2650U
@@ -9,7 +9,7 @@ $(eval $(call Profile,DSL2650U))
 
 define Profile/DSL274XBC2
   NAME:=D-Link DSL-2740B/DSL-2741B rev C2
-  PACKAGES:=kmod-brcm-wl kmod-usb-core kmod-usb-ohci kmod-usb2 wlc
+  PACKAGES:=
 endef
 define Profile/DSL274XBC2/Description
 	Package set for the DSL-2740B/DSL-2741B rev C2
@@ -18,7 +18,7 @@ $(eval $(call Profile,DSL274XBC2))
 
 define Profile/DVAG3810BN
   NAME:=D-Link DVAG3810BN
-  PACKAGES:=kmod-brcm-wl kmod-usb-core kmod-usb-ohci kmod-usb2 wlc
+  PACKAGES:=
 endef
 define Profile/DVAG3810BN/Description
 	Package set for the DVAG3810BN

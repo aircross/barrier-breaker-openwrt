@@ -18,7 +18,7 @@ $(eval $(call Profile,VR3025UN))
 
 define Profile/WAP5813N
   NAME:=Comtrend WAP-5813n
-  PACKAGES:=kmod-brcm-wl kmod-usb-core kmod-usb-ohci kmod-usb2 wlc
+  PACKAGES:=kmod-b43 kmod-usb-core kmod-usb-ohci kmod-usb2 wpad-mini
 endef
 define Profile/WAP5813N/Description
 	Package set for the WAP-5813n
