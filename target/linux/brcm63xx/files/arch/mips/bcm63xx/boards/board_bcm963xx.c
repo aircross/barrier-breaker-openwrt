@@ -4960,7 +4960,7 @@ int __init board_register_devices(void)
 			pr_err(PFX "failed to register fallback SPROM\n");
 	}
 #endif
-#ifdef CONFIG_BCMA_HOST_PCI
+#ifdef CONFIG_BCMA
 	if (!board.has_caldata &&
 		bcma_arch_register_fallback_sprom(
 		&bcm63xx_get_bcma_fallback_sprom) < 0)
