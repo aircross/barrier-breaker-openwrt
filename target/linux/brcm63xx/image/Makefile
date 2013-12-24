@@ -446,6 +446,11 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
 	$(call Image/Build/CFE,$(1),96368MVWG_hg622,6368,HG622,,--pad 4)
   endef
 
+  # Netgear DGND3700/DGND3800B DGND3700_3800B
+  define Image/Build/Profile/DGND3700_3800B
+	$(call Image/Build/CFEFIXUP,$(1),96368MVWG,DGND3700_3800B,6368,DGND3700_3800B)
+  endef
+
   # ZyXEL P870HW-51a v2
   define Image/Build/Profile/P870HW51AV2
 	$(call Image/Build/CFE,$(1),96368VVW,6368,P870HW-51av2)

@@ -132,6 +132,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"DGND3700_3800B")
+			board_model="Netgear DGND3700/DGND3800B"
+			status_led="DGND3700_3800B:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"GW6000")
 			board_model="GW6000"
 			brcm63xx_has_reset_button="true"
