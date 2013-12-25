@@ -41,6 +41,17 @@ define uboot/arv4519pw_nor
   SOC:=danube
 endef
 
+define uboot/arv7510pw22_ram
+  TITLE:=U-Boot for Arcadyan arv7510pw22 (RAM)
+  SOC:=danube
+  DDR_SETTINGS:=board/arcadyan/arv7518pw/ddr_settings.h
+endef
+
+define uboot/arv7510pw22_nor
+  TITLE:=U-Boot for Arcadyan arv7510pw22 (NOR)
+  SOC:=danube
+endef
+
 define uboot/arv7518pw_ram
   TITLE:=U-Boot for Arcadyan arv7518pw (RAM)
   SOC:=danube
@@ -65,6 +76,7 @@ endef
 
 UBOOTS:= \
 	arv4519pw_ram arv4519pw_nor \
+	arv7510pw22_ram arv7510pw22_nor \
 	arv7518pw_ram arv7518pw_nor \
 	gigasx76x_ram gigasx76x_nor
 
