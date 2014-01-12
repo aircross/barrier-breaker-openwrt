@@ -122,7 +122,7 @@ static int bcm63xx_rng_probe(struct platform_device *pdev)
 		goto out_free_rng;
 	}
 
-	clk_enable(clk);
+	clk_prepare_enable(clk);
 
 	ret = hwrng_register(rng);
 	if (ret) {

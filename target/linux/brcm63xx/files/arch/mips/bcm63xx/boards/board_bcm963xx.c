@@ -80,9 +80,6 @@ static struct board_info __initdata board_cvg834g = {
 	.name				= "CVG834G_E15R3921",
 	.expected_cpu_id		= 0x3368,
 
-	.has_uart0			= 1,
-	.has_uart1			= 1,
-
 	.has_enet0			= 1,
 	.has_pci			= 1,
 
@@ -112,7 +109,6 @@ static struct board_info __initdata board_96328avng = {
 	.name				= "96328avng",
 	.expected_cpu_id		= 0x6328,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_usbd			= 0,
 
@@ -187,7 +183,6 @@ static struct board_info __initdata board_AR5381u = {
 	.name					= "96328A-1241N",
 	.expected_cpu_id			= 0x6328,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -253,7 +248,6 @@ static struct board_info __initdata board_AR5387un = {
 	.name					= "96328A-1441N1",
 	.expected_cpu_id			= 0x6328,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -325,7 +319,6 @@ static struct board_info __initdata board_963281TAN = {
 	.name				= "963281TAN",
 	.expected_cpu_id		= 0x6328,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 
 	.has_enetsw			= 1,
@@ -395,7 +388,6 @@ static struct board_info __initdata board_A4001N = {
 	.name					= "963281T_TEF",
 	.expected_cpu_id			= 0x6328,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -514,7 +506,6 @@ static struct board_info __initdata board_dsl_274xb_f1 = {
 	.name				= "AW4339U",
 	.expected_cpu_id		= 0x6328,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 
 	.has_caldata			= 1,
@@ -624,7 +615,6 @@ static struct board_info __initdata board_96338gw = {
 	.name				= "96338GW",
 	.expected_cpu_id		= 0x6338,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.enet0 = {
 		.has_phy		= 1,
@@ -669,7 +659,6 @@ static struct board_info __initdata board_96338w = {
 	.name				= "96338W",
 	.expected_cpu_id		= 0x6338,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.enet0 = {
 		.has_phy		= 1,
@@ -746,7 +735,6 @@ static struct board_info __initdata board_rta1320_16m = {
 	.name				= "RTA1320_16M",
 	.expected_cpu_id		= 0x6338,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 
 	.enet0 = {
@@ -789,15 +777,11 @@ static struct board_info __initdata board_rta1320_16m = {
 static struct board_info __initdata board_96345gw2 = {
 	.name				= "96345GW2",
 	.expected_cpu_id		= 0x6345,
-
-	.has_uart0			= 1,
 };
 
 static struct board_info __initdata board_rta770bw = {
 	.name				= "RTA770BW",
 	.expected_cpu_id		= 0x6345,
-
-	.has_uart0			= 1,
 
 	.has_enet0			= 1,
 
@@ -845,8 +829,6 @@ static struct board_info __initdata board_rta770bw = {
 static struct board_info __initdata board_rta770w = {
 	.name				= "RTA770W",
 	.expected_cpu_id		= 0x6345,
-
-	.has_uart0			= 1,
 
 	.has_enet0			= 1,
 
@@ -900,7 +882,6 @@ static struct board_info __initdata board_96348r = {
 	.name				= "96348R",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_pci			= 1,
 
@@ -944,7 +925,6 @@ static struct board_info __initdata board_96348gw_10 = {
 	.name				= "96348GW-10",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1016,7 +996,6 @@ static struct board_info __initdata board_96348gw_11 = {
 	.name				= "96348GW-11",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1083,7 +1062,6 @@ static struct board_info __initdata board_V2110 = {
 	.name				= "V2110",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
 
@@ -1139,7 +1117,6 @@ static struct board_info __initdata board_ct536_ct5621 = {
 	.name				= "CT536_CT5621",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 0,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1183,7 +1160,6 @@ static struct board_info __initdata board_CT5365 = {
 	.name				= "96348A-122",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
 
@@ -1246,7 +1222,6 @@ static struct board_info __initdata board_96348gw = {
 	.name				= "96348GW",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1316,7 +1291,6 @@ static struct board_info __initdata board_gw6200 = {
 	.name				= "GW6200",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1378,7 +1352,6 @@ static struct board_info __initdata board_gw6000 = {
 	.name				= "GW6000",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1422,7 +1395,6 @@ static struct board_info __initdata board_FAST2404 = {
 	.name				= "F@ST2404",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1447,7 +1419,6 @@ static struct board_info __initdata board_FAST2604 = {
 	.name						= "F@ST2604",
 	.expected_cpu_id			= 0x6348,
 
-	.has_uart0					= 1,
 	.has_pci					= 1,
 	.has_ohci0					= 1,
 
@@ -1498,7 +1469,6 @@ static struct board_info __initdata board_rta1025w_16 = {
 	.name				= "RTA1025W_16",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1520,7 +1490,6 @@ static struct board_info __initdata board_DV201AMR = {
 	.name				= "DV201AMR",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_ohci0			= 1,
 
@@ -1542,7 +1511,6 @@ static struct board_info __initdata board_96348gw_a = {
 	.name				= "96348GW-A",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1580,7 +1548,6 @@ static struct board_info __initdata board_96348_D4PW = {
 
 	.has_enet1			= 1,
 	.has_pci			= 1,
-	.has_uart0 			= 1,
 
 	.enet1 = {
 		.has_phy		= 1,
@@ -1628,7 +1595,6 @@ static struct board_info __initdata board_spw500v = {
 	.name				= "SPW500V",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_pci			= 1,
 
@@ -1689,7 +1655,6 @@ static struct board_info __initdata board_96348sv = {
 	.name				= "MAGIC",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1760,7 +1725,6 @@ static struct board_info __initdata board_V2500V_BB = {
 	.name				= "V2500V_BB",
         .expected_cpu_id                = 0x6348,
 
-        .has_uart0                      = 1,
         .has_enet0                      = 1,
         .has_enet1                      = 1,
         .has_pci                        = 1,
@@ -1819,7 +1783,6 @@ static struct board_info __initdata board_CPVA502plus = {
 	.name				= "CPVA502+",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1859,7 +1822,6 @@ static struct board_info __initdata board_96348W3 = {
  	.name	 			= "96348W3",
 	.expected_cpu_id		= 0x6348,
 
-	.has_uart0	 		= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
 
@@ -1917,7 +1879,6 @@ static struct board_info __initdata board_96358vw = {
 	.name				= "96358VW",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -1971,7 +1932,6 @@ static struct board_info __initdata board_96358vw2 = {
 	.name				= "96358VW2",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -2021,7 +1981,6 @@ static struct board_info __initdata board_CPVA642 = {
 	.name                           = "CPVA642",
 	.expected_cpu_id                = 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet1                      = 1,
 	.has_pci                        = 1,
 
@@ -2113,7 +2072,6 @@ static struct board_info __initdata board_AGPFS0 = {
 	.name				= "AGPF-S0",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -2231,8 +2189,6 @@ static struct board_info __initdata board_DWVS0 = {
 	.name				= "DWV-S0",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
-
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -2346,7 +2302,6 @@ static struct board_info __initdata board_dsl_274xb_rev_c = {
 	.name				= "AW4139",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
 
@@ -2435,7 +2390,6 @@ static struct board_info __initdata board_nb4_ser_r0 = {
 	.name				= "NB4-SER-r0",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -2548,7 +2502,6 @@ static struct board_info __initdata board_nb4_ser_r1 = {
 	.name				= "NB4-SER-r1",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -2661,7 +2614,6 @@ static struct board_info __initdata board_nb4_ser_r2 = {
 	.name				= "NB4-SER-r2",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -2774,7 +2726,6 @@ static struct board_info __initdata board_nb4_fxc_r1 = {
 	.name				= "NB4-FXC-r1",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -2882,7 +2833,6 @@ static struct board_info __initdata board_nb4_fxc_r2 = {
 	.name				= "NB4-FXC-r2",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0			= 1,
 	.has_enet0			= 1,
 	.has_enet1			= 1,
 	.has_pci			= 1,
@@ -3025,7 +2975,6 @@ static struct board_info __initdata board_ct6373_1 = {
 	.name				= "CT6373-1",
 	.expected_cpu_id	= 0x6358,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_ohci0			= 1,
 	.has_ehci0			= 1,
@@ -3097,7 +3046,6 @@ static struct board_info __initdata board_HW520 = {
 	.name					= "HW6358GW_B",
 	.expected_cpu_id		= 0x6358,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -3133,8 +3081,6 @@ static struct board_info __initdata board_HW520 = {
 static struct board_info __initdata board_HW553 = {
 	.name                           = "HW553",
 	.expected_cpu_id                = 0x6358,
-
-	.has_uart0			= 1,
 
 	.has_enet1                      = 1,
 	.has_pci                        = 1,
@@ -3204,7 +3150,6 @@ static struct board_info __initdata board_HW556 = {
 	.name					= "HW556",
 	.expected_cpu_id			= 0x6358,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -3283,7 +3228,6 @@ static struct board_info __initdata board_HW556_A = {
 	.name					= "HW556_A",
 	.expected_cpu_id			= 0x6358,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -3409,7 +3353,6 @@ static struct board_info __initdata board_HW556_B = {
 	.name					= "HW556_B",
 	.expected_cpu_id			= 0x6358,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -3542,7 +3485,6 @@ static struct board_info __initdata board_HW556_C = {
 	.name					= "HW556_C",
 	.expected_cpu_id			= 0x6358,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -3677,7 +3619,6 @@ static struct board_info __initdata board_spw303v = {
 	.name			= "96358-502V",
 	.expected_cpu_id	= 0x6358,
 
-	.has_uart0		= 1,
 	.has_enet0		= 1,
 	.has_pci		= 1,
 
@@ -3743,7 +3684,6 @@ static struct board_info __initdata board_DVAG3810BN = {
 	.name			= "DVAG3810BN",
 	.expected_cpu_id	= 0x6358,
 
-	.has_uart0		= 1,
 	.has_enet0		= 1,
 	.has_enet1		= 1,
 	.has_pci		= 1,
@@ -3843,8 +3783,6 @@ static struct board_info __initdata board_nb6 = {
 	.name				= "NB6",
 	.expected_cpu_id		= 0x6362,
 
-	.has_uart0			= 1,
-
 	.has_ohci0			= 1,
 	.has_ehci0			= 1,
 
@@ -3911,7 +3849,6 @@ static struct board_info __initdata board_HG622 = {
 	.name				= "96368MVWG_hg622",
 	.expected_cpu_id	= 0x6368,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_ohci0			= 1,
 	.has_ehci0			= 1,
@@ -3991,7 +3928,6 @@ static struct board_info __initdata board_P870HW51A = {
 	.name				= "96368VVW",
 	.expected_cpu_id		= 0x6368,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_ohci0			= 1,
 	.has_ehci0			= 1,
@@ -4074,7 +4010,6 @@ static struct board_info __initdata board_VR3025u = {
 	.name					= "96368M-1541N",
 	.expected_cpu_id		= 0x6368,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -4146,7 +4081,6 @@ static struct board_info __initdata board_VR3025un = {
 	.name					= "96368M-1341N",
 	.expected_cpu_id		= 0x6368,
 
-	.has_uart0				= 1,
 	.has_pci				= 1,
 	.has_ohci0				= 1,
 	.has_ehci0				= 1,
@@ -4232,7 +4166,6 @@ static struct board_info __initdata board_WAP5813n = {
 	.name				= "96369R-1231N",
 	.expected_cpu_id		= 0x6368,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_ohci0			= 1,
 	.has_ehci0			= 1,
@@ -4325,7 +4258,6 @@ static struct board_info __initdata board_DGND3700_3800B = {
 	.name				= "DGND3700_3800B",
 	.expected_cpu_id		= 0x6368,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_ohci0			= 1,
 	.has_ehci0			= 1,
@@ -4445,7 +4377,6 @@ static struct board_info __initdata board_96368mvwg = {
 	.name				= "96368MVWG",
 	.expected_cpu_id		= 0x6368,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_enetsw			= 1,
 
@@ -4512,7 +4443,6 @@ static struct board_info __initdata board_96368mvngr = {
 	.name				= "96368MVNgr",
 	.expected_cpu_id		= 0x6368,
 
-	.has_uart0			= 1,
 	.has_pci			= 1,
 	.has_enetsw			= 1,
 
@@ -4951,12 +4881,6 @@ int __init board_register_devices(void)
 	int button_count = 0;
 	int led_count = 0;
 	int i;
-
-	if (board.has_uart0)
-		bcm63xx_uart_register(0);
-
-	if (board.has_uart1)
-		bcm63xx_uart_register(1);
 
 	if (board.has_pccard)
 		bcm63xx_pcmcia_register();

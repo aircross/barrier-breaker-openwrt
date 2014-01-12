@@ -1,0 +1,156 @@
+/*
+ * Device Tree Include file for Broadcom BCM6358 SoC
+ *
+ * Copyright (C) 2012 Jonas Gorski <jonas.gorski@gmail.com>
+ *
+ * This file is licensed under the terms of the GNU General Public License
+ * version 2.  This program is licensed "as is" without any warranty of any
+ * kind, whether express or implied.
+ */
+
+/ {
+	#address-cells = <1>;
+	#size-cells = <1>;
+	compatible = "brcm,bcm6358";
+
+	cpus {
+		cpu@0 {
+			compatible = "brcm,bmips4350", "mips,mips4Kc";
+		};
+		cpu@1 {
+			compatible = "brcm,bmips4350", "mips,mips4Kc";
+		};
+	};
+
+	memory { device_type = "memory"; reg = <0 0>; };
+
+	ubus@fffe0000 {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges = <0 0xfffe0000 0x20000>;
+		compatible = "simple-bus";
+
+		interrupt-parent = <&ipic>;
+
+		perf@0 {
+			epic: interrupt-controller@18 {
+				compatible = "brcm,bcm63xx-epic";
+				interrupt-controller;
+				#interrupt-cells = <2>;
+			};
+
+			ipic: interrupt-controller@20 {
+				compatible = "brcm,bcm63xx-ipic";
+				interrupt-controller;
+				#interrupt-cells = <1>;
+			};
+
+			clocks {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				periph: pll {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-frequency = <50000000>;
+					clock-output-names = "periph";
+				};
+
+				adslphy: clock@5 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "adslphy";
+					brcm,gate-bit = <5>;
+				};
+
+				pcm: clock@8 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "pcm";
+					brcm,gate-bit = <8>;
+				};
+
+				spi: clock@9 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "spi";
+					brcm,gate-bit = <9>;
+				};
+
+				usbd: clock@10 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "usbd";
+					brcm,gate-bit = <10>;
+				};
+
+				sar: clock@11 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "sar", "atm";
+					brcm,gate-bit = <11>;
+				};
+
+
+				enet_misc: clock@17 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "enet-misc";
+					brcm,gate-bit = <17>;
+				};
+
+				enet0: clock@18 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <1>;
+					clocks = <&enet_misc>;
+					clock-output-names = "enet0";
+					brcm,gate-bit = <18>;
+				};
+
+				enet1: clock@19 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <1>;
+					clocks = <&enet_misc>;
+					clock-output-names = "enet1";
+					brcm,gate-bit = <19>;
+				};
+
+				usbsu: clock@20 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "usbsu";
+					brcm,gate-bit = <20>;
+				};
+
+				ephy: clock@21 {
+					compatible = "brcm,bcm63xx-clock";
+					#clock-cells = <0>;
+					clock-output-names = "ephy";
+					brcm,gate-bit = <21>;
+				};
+			};
+		};
+
+		gpio0: gpio@80 {
+			compatible = "brcm,bcm63xx-gpio";
+			reg = <0x80 0x80>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpio = <40>;
+		};
+
+		uart0: serial@100 {
+			compatible = "brcm,bcm63xx-uart";
+			reg = <0x100 0x18>;
+			interrupts = <2>;
+			status = "disabled";
+		};
+
+		uart1: serial@120 {
+			compatible = "brcm,bcm63xx-uart";
+			reg = <0x120 0x18>;
+			interrupts = <3>;
+			status = "disabled";
+		};
+	};
+};

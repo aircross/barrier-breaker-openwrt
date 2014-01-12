@@ -2804,7 +2804,7 @@ static int bcm_enetsw_probe(struct platform_device *pdev)
 		ret = PTR_ERR(priv->mac_clk);
 		goto out_unmap;
 	}
-	clk_enable(priv->mac_clk);
+	clk_prepare_enable(priv->mac_clk);
 
 	priv->rx_chan = 0;
 	priv->tx_chan = 1;

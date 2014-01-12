@@ -1,9 +1,10 @@
-obj-y		+= clk.o cpu.o cs.o gpio.o irq.o nvram.o prom.o reset.o \
-		   setup.o timer.o dev-dsp.o dev-enet.o dev-flash.o \
-		   dev-hsspi.o dev-pcmcia.o dev-rng.o dev-spi.o dev-uart.o \
-		   dev-wdt.o dev-usb-ehci.o dev-usb-ohci.o dev-usb-usbd.o \
+obj-y		+= cpu.o cs.o gpio.o irq.o nvram.o prom.o reset.o setup.o \
+		   timer.o dev-dsp.o dev-enet.o dev-flash.o dev-hsspi.o \
+		   dev-pcmcia.o dev-rng.o dev-spi.o dev-uart.o dev-wdt.o \
+		   dev-usb-ehci.o dev-usb-ohci.o dev-usb-usbd.o \
 		   pci-ath9k-fixup.o pci-rt2x00-fixup.o usb-common.o
 obj-$(CONFIG_EARLY_PRINTK)	+= early_printk.o
 obj-$(CONFIG_BCMA)			+= sprom-bcma.o
 
 obj-y		+= boards/
+obj-y		+= dts/

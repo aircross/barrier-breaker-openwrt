@@ -1,0 +1,25 @@
+diff -uprN a/arch/mips/Kconfig b/arch/mips/Kconfig
+--- a/arch/mips/Kconfig	2014-01-12 16:43:30.593305523 +0100
++++ b/arch/mips/Kconfig	2014-01-12 16:45:31.847818723 +0100
+@@ -137,7 +137,9 @@ config BCM63XX
+ 	select SYS_HAS_EARLY_PRINTK
+ 	select SWAP_IO_SPACE
+ 	select ARCH_REQUIRE_GPIOLIB
+-	select HAVE_CLK
++	select COMMON_CLK
++	select CLKDEV
++	select USE_OF
+ 	help
+ 	 Support for BCM63XX based boards
+ 
+diff -uprN a/drivers/clk/Makefile b/drivers/clk/Makefile
+--- a/drivers/clk/Makefile	2014-01-12 16:44:10.169303730 +0100
++++ b/drivers/clk/Makefile	2014-01-12 16:48:13.832016109 +0100
+@@ -30,6 +30,7 @@ obj-$(CONFIG_ARCH_VT8500)	+= clk-vt8500.
+ obj-$(CONFIG_ARCH_ZYNQ)		+= clk-zynq.o
+ obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
+ obj-$(CONFIG_PLAT_SAMSUNG)	+= samsung/
++obj-$(CONFIG_BCM63XX)    += clk-bcm63xx.o
+ 
+ obj-$(CONFIG_X86)		+= x86/
+ 
