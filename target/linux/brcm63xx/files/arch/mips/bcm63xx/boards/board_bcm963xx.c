@@ -4039,42 +4039,6 @@ static struct board_info __initdata board_VR3025u = {
 			},
 		},
 	},
-
-	.leds = {
-		{
-			.name		= "VR-3025u:green:dsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "VR-3025u:green:inet",
-			.gpio		= 5,
-		},
-		{
-			.name		= "VR-3025u:green:power",
-			.gpio		= 22,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "VR-3025u:red:power",
-			.gpio		= 24,
-		},
-		{
-			.name		= "VR-3025u:red:inet",
-			.gpio		= 31,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "reset",
-			.gpio			= 34,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low		= 1,
-		},
-	},
 };
 
 static struct board_info __initdata board_VR3025un = {
@@ -4855,31 +4819,11 @@ void __init board_setup(void)
 		panic("unexpected CPU for bcm963xx board");
 }
 
-static struct gpio_led_platform_data bcm63xx_led_data;
-
-static struct platform_device bcm63xx_gpio_leds = {
-	.name			= "leds-gpio",
-	.id			= 0,
-	.dev.platform_data	= &bcm63xx_led_data,
-};
-
-static struct gpio_keys_platform_data bcm63xx_gpio_keys_data = {
-	.poll_interval  = BCM963XX_KEYS_POLL_INTERVAL,
-};
-
-static struct platform_device bcm63xx_gpio_keys_device = {
-	.name		= "gpio-keys-polled",
-	.id		= 0,
-	.dev.platform_data = &bcm63xx_gpio_keys_data,
-};
-
 /*
  * third stage init callback, register all board devices.
  */
 int __init board_register_devices(void)
 {
-	int button_count = 0;
-	int led_count = 0;
 	int i;
 
 	if (board.has_pccard)
@@ -4941,31 +4885,9 @@ int __init board_register_devices(void)
 
 	bcm63xx_flash_register(board.has_caldata, board.caldata);
 
-	/* count number of LEDs defined by this device */
-	while (led_count < ARRAY_SIZE(board.leds) && board.leds[led_count].name)
-		led_count++;
-
-	if (led_count) {
-		bcm63xx_led_data.num_leds = led_count;
-		bcm63xx_led_data.leds = board.leds;
-
-		platform_device_register(&bcm63xx_gpio_leds);
-	}
-
 	if (board.ephy_reset_gpio && board.ephy_reset_gpio_flags)
 		gpio_request_one(board.ephy_reset_gpio,
 				board.ephy_reset_gpio_flags, "ephy-reset");
-
-	/* count number of BUTTONs defined by this device */
-	while (button_count < ARRAY_SIZE(board.buttons) && board.buttons[button_count].desc)
-		button_count++;
-
-	if (button_count) {
-		bcm63xx_gpio_keys_data.nbuttons = button_count;
-		bcm63xx_gpio_keys_data.buttons = board.buttons;
-
-		platform_device_register(&bcm63xx_gpio_keys_device);
-	}
 
 	/* register any fixups */
 	for (i = 0; i < board.has_caldata; i++) {

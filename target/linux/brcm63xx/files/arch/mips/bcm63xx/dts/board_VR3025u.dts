@@ -17,8 +17,49 @@
 	compatible = "96368M-1541N";
 
 	ubus@10000000 {
+		gpio0: gpio@80 {
+			status = "ok";
+		};
+
 		serial@100 {
 			status = "ok";
+		};
+	};
+
+	gpio-keys-polled {
+		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <20>;
+		reset {
+			label = "reset";
+			gpios = <&gpio0 34 1>;
+			linux,code = <0x198>;
+			debounce-interval = <60>;
+		};
+	};
+
+	gpio-leds {
+		compatible = "gpio-leds";
+		dsl {
+			label = "VR-3025u:green:dsl";
+			gpios = <&gpio0 2 1>;
+		};
+		inet-green {
+			label = "VR-3025u:green:inet";
+			gpios = <&gpio0 5 0>;
+		};
+		power-green {
+			label = "VR-3025u:green:power";
+			gpios = <&gpio0 22 0>;
+		};
+		power-red {
+			label = "VR-3025u:red:power";
+			gpios = <&gpio0 24 0>;
+		};
+		inet-red {
+			label = "VR-3025u:red:inet";
+			gpios = <&gpio0 31 0>;
 		};
 	};
 };
