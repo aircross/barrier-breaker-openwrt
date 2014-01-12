@@ -63,12 +63,6 @@ struct board_info {
 	/* DSP config */
 	struct bcm63xx_dsp_platform_data dsp;
 
-	/* GPIO LEDs */
-	struct gpio_led leds[14];
-
-	/* Buttons */
-	struct gpio_keys_button buttons[4];
-
 	/* External PHY reset GPIO */
 	unsigned int ephy_reset_gpio;
 

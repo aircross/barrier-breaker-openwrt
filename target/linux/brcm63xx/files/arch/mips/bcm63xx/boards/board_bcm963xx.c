@@ -49,9 +49,6 @@
 
 #define HCS_OFFSET_128K			0x20000
 
-#define BCM963XX_KEYS_POLL_INTERVAL	20
-#define BCM963XX_KEYS_DEBOUNCE_INTERVAL	(BCM963XX_KEYS_POLL_INTERVAL * 3)
-
 #define CFE_OFFSET_64K			0x10000
 #define CFE_OFFSET_128K			0x20000
 
@@ -86,14 +83,6 @@ static struct board_info __initdata board_cvg834g = {
 	.enet0 = {
 		.has_phy		= 1,
 		.use_internal_phy	= 1,
-	},
-
-	.leds = {
-		{
-			.name		= "CVG834G:green:power",
-			.gpio		= 37,
-			.default_trigger= "default-on",
-		},
 	},
 
 	.ephy_reset_gpio		= 36,
@@ -143,40 +132,6 @@ static struct board_info __initdata board_96328avng = {
 			},
 		},
 	},
-
-	.leds = {
-		{
-			.name		= "96328avng::internet-fail",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96328avng::dsl",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96328avng::power",
-			.gpio		= 4,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96328avng::power-fail",
-			.gpio		= 8,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96328avng::wps",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96328avng::internet",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-	},
 };
 
 static struct board_info __initdata board_AR5381u = {
@@ -210,36 +165,6 @@ static struct board_info __initdata board_AR5381u = {
 				.phy_id		= 4,
 				.name		= "Port 4",
 			},
-		},
-	},
-
-	.leds = {
-		{
-			.name			= "AR-5381u:green:power",
-			.gpio			= 4,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "AR-5381u:red:alarm",
-			.gpio			= 2,
-			.active_low		= 1,
-		},
-		{
-			.name			= "AR-5381u:green:inet",
-			.gpio			= 3,
-			.active_low		= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "reset",
-			.gpio			= 23,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
 		},
 	},
 };
@@ -277,42 +202,6 @@ static struct board_info __initdata board_AR5387un = {
 			},
 		},
 	},
-
-	.leds = {
-		{
-			.name			= "AR-5387un:green:power",
-			.gpio			= 8,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "AR-5387un:red:power",
-			.gpio			= 4,
-		},
-		{
-			.name			= "AR-5387un:green:inet",
-			.gpio			= 7,
-		},
-		{
-			.name			= "AR-5387un:red:inet",
-			.gpio			= 1,
-		},
-		{
-			.name			= "AR-5387un:green:dsl",
-			.gpio			= 11,
-			.active_low		= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "reset",
-			.gpio			= 23,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_963281TAN = {
@@ -347,41 +236,6 @@ static struct board_info __initdata board_963281TAN = {
 			},
 		},
 	},
-
-	.leds = {
-		{
-			.name		= "963281TAN::internet",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-		{
-			.name		= "963281TAN::power",
-			.gpio		= 4,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "963281TAN::internet-fail",
-			.gpio		= 7,
-			.active_low	= 1,
-		},
-		{
-			.name		= "963281TAN::power-fail",
-			.gpio		= 8,
-			.active_low	= 1,
-		},
-		{
-			.name		= "963281TAN::wps",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "963281TAN::dsl",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-
-	},
 };
 
 static struct board_info __initdata board_A4001N = {
@@ -415,89 +269,6 @@ static struct board_info __initdata board_A4001N = {
 				.phy_id		= 4,
 				.name		= "Port 4",
 			},
-		},
-	},
-
-	.leds = {
-		{
-			.name			= "A4001N:green:power",
-			.gpio			= 4,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "A4001N:red:power",
-			.gpio			= 8,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:green:inet",
-			.gpio			= 11,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:red:inet",
-			.gpio			= 2,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:green:ppp",
-			.gpio			= 3,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:red:ppp",
-			.gpio			= 5,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:green:3g",
-			.gpio			= 6,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:red:3g",
-			.gpio			= 7,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:green:wlan",
-			.gpio			= 9,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:red:wlan",
-			.gpio			= 10,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:green:eth",
-			.gpio			= 31,
-			.active_low		= 1,
-		},
-		{
-			.name			= "A4001N:red:eth",
-			.gpio			= 20,
-			.active_low		= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "reset",
-			.gpio			= 23,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "wlan",
-			.gpio			= 24,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
 		},
 	},
 };
@@ -544,66 +315,6 @@ static struct board_info __initdata board_dsl_274xb_f1 = {
 			},
 		},
 	},
-
-	.leds = {
-		{
-			.name		= "dsl-274xb:red:internet",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "dsl-274xb:green:dsl",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "dsl-274xb:green:power",
-			.gpio		= 4,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "dsl-274xb:red:power",
-			.gpio		= 8,
-			.active_low	= 1,
-		},
-		{
-			.name		= "dsl-274xb:blue:wps",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "dsl-274xb:green:internet",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "wifi",
-			.gpio		= 10,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= BTN_0,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "reset",
-			.gpio		= 23,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 24,
-			.active_low	= 1,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 #endif
 
@@ -624,35 +335,6 @@ static struct board_info __initdata board_96338gw = {
 	},
 
 	.has_ohci0			= 1,
-
-	.leds = {
-		{
-			.name		= "96338GW:green:adsl",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338GW:green:ses",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338GW:green:ppp-fail",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338GW:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96338GW:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		}
-	},
 };
 
 static struct board_info __initdata board_96338w = {
@@ -665,35 +347,6 @@ static struct board_info __initdata board_96338w = {
 		.phy_id			= 0,
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
-	},
-
-	.leds = {
-		{
-			.name		= "96338W:green:adsl",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338W:green:ses",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338W:green:ppp-fail",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338W:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96338W:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
 	},
 };
 
@@ -709,26 +362,6 @@ static struct board_info __initdata board_96338w2_e7t = {
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
 	},
-
-		.leds = {
-		{
-			.name		= "96338W2_E7T:green:ppp",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338W2_E7T:green:ppp-fail",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96338W2_E7T:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-
-		},
-	},
 };
 
 static struct board_info __initdata board_rta1320_16m = {
@@ -742,30 +375,6 @@ static struct board_info __initdata board_rta1320_16m = {
 		.phy_id			= 0,
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
-	},
-
-		.leds = {
-		{
-			.name		= "RTA1320_16M:green:adsl",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA1320_16M:green:ppp",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA1320_16M:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "RTA1320_16M:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
 	},
 };
 #endif
@@ -791,39 +400,6 @@ static struct board_info __initdata board_rta770bw = {
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
 	},
-
-	.leds = {
-		{
-			.name		= "RTA770BW:green:usb",
-			.gpio		= 7,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA770BW:green:adsl",
-			.gpio		= 8,
-		},
-		{
-			.name		= "RTA770BW:green:diag",
-			.gpio		= 10,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA770BW:green:wlan",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 13,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_rta770w = {
@@ -837,39 +413,6 @@ static struct board_info __initdata board_rta770w = {
 		.phy_id			= 0,
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
-	},
-
-	.leds = {
-		{
-			.name		= "RTA770W:green:usb",
-			.gpio		= 7,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA770W:green:adsl",
-			.gpio		= 8,
-		},
-		{
-			.name		= "RTA770W:green:diag",
-			.gpio		= 10,
-			.active_low	= 1,
-		},
-		{
-			.name		= "RTA770W:green:wlan",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 13,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 #endif
@@ -888,36 +431,6 @@ static struct board_info __initdata board_96348r = {
 	.enet0 = {
 		.has_phy		= 1,
 		.use_internal_phy	= 1,
-	},
-
-	.leds = {
-		{
-			.name		= "96348R:green:adsl-fail",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348R:green:ppp",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348R:green:ppp-fail",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348R:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-
-		},
-		{
-			.name		= "96348R:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
 	},
 };
 
@@ -950,46 +463,6 @@ static struct board_info __initdata board_96348gw_10 = {
 		.cs			= 2,
 		.ext_irq		= 2,
 	},
-
-	.leds = {
-		{
-			.name		= "96348GW-10:green:adsl-fail",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW-10:green:ppp",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW-10:green:ppp-fail",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW-10:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96348GW-10:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 6,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_96348gw_11 = {
@@ -1015,45 +488,6 @@ static struct board_info __initdata board_96348gw_11 = {
 
 	.has_ohci0 = 1,
 	.has_pccard = 1,
-
-	.leds = {
-		{
-			.name		= "96348GW-11:green:adsl-fail",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW-11:green:ppp",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW-11:green:ppp-fail",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW-11:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96348GW-11:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 33,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 
@@ -1070,45 +504,6 @@ static struct board_info __initdata board_V2110 = {
 		.phy_id			= 0,
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
-	},
-
-	.leds = {
-		{
-			.name           = "V2110:green:power",
-			.gpio           = 0,
-			.active_low     = 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name           = "V2110:red:power",
-			.gpio           = 1,
-			.active_low     = 1,
-		},
-		{
-			.name           = "V2110:green:adsl",
-			.gpio           = 2,
-			.active_low     = 1,
-		},
-		{       .name           = "V2110:green:ppp",
-			.gpio           = 3,
-			.active_low     = 1,
-		},
-		{
-			.name           = "V2110:green:wireless",
-			.gpio           = 6,
-			.active_low     = 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 33,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 
@@ -1130,30 +525,6 @@ static struct board_info __initdata board_ct536_ct5621 = {
 
 	.has_ohci0 = 1,
 	.has_pccard = 1,
-
-	.leds = {
-		{
-			.name		= "CT536_CT5621:green:adsl-fail",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CT536_CT5621:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 33,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_CT5365 = {
@@ -1171,51 +542,6 @@ static struct board_info __initdata board_CT5365 = {
 	},
 
 	.has_ohci0 = 1,
-
-	.leds = {
-		{
-			.name		= "CT-5365:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "CT-5365:red:alarm",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CT-5365:green:wps",
-			.gpio		= 6,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 33,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wlan",
-			.gpio		= 34,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_WLAN,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 35,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_96348gw = {
@@ -1246,45 +572,6 @@ static struct board_info __initdata board_96348gw = {
 		.ext_irq		= 2,
 		.cs			= 2,
 	},
-
-	.leds = {
-		{
-			.name		= "96348GW:green:adsl-fail",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW:green:ppp",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW:green:ppp-fail",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96348GW:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 36,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_gw6200 = {
@@ -1313,39 +600,6 @@ static struct board_info __initdata board_gw6200 = {
 		.ext_irq		= 2,
 		.cs			= 2,
 	},
-
-	.leds = {
-		{
-			.name		= "GW6200:green:line1",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "GW6200:green:line2",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "GW6200:green:line3",
-			.gpio		= 6,
-			.active_low	= 1,
-		},
-		{
-			.name		= "GW6200:green:tel",
-			.gpio		= 7,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 36,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_gw6000 = {
@@ -1373,19 +627,6 @@ static struct board_info __initdata board_gw6000 = {
 		.gpio_int		= 34,
 		.ext_irq		= 2,
 		.cs			= 2,
-	},
-
-	/* GW6000 has no GPIO-controlled leds */
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 36,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 
@@ -1428,40 +669,6 @@ static struct board_info __initdata board_FAST2604 = {
 		.phy_id				= 0,
 		.force_speed_100		= 1,
 		.force_duplex_full		= 1,
-	},
-
-	.leds = {
-		{
-			.name				= "F@ST2604:green:power",
-			.gpio				= 0,
-			.active_low			= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name				= "F@ST2604:red:power",
-			.gpio				= 1,
-			.active_low			= 1,
-		},
-		{
-			.name				= "F@ST2604:red:inet",
-			.gpio				= 4,
-			.active_low			= 1,
-		},
-		{
-			.name				= "F@ST2604:green:wps",
-			.gpio				= 5,
-			.active_low			= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc				= "reset",
-			.gpio				= 33,
-			.active_low			= 1,
-			.type				= EV_KEY,
-			.code				= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 
@@ -1527,19 +734,6 @@ static struct board_info __initdata board_96348gw_a = {
 	},
 
 	.has_ohci0 = 1,
-
-	.leds = {
-		{
-			.name		= "96348GW-A::adsl",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348GW-A::usb",
-			.gpio		= 0,
-			.active_low	= 1,
-		}
-	},
 };
 
 static struct board_info __initdata board_96348_D4PW = {
@@ -1554,40 +748,6 @@ static struct board_info __initdata board_96348_D4PW = {
 		.phy_id			= 0,
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
-	},
-
-	.leds = {
-		{
-			.name		= "D-4P-W:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-		},
-		{
-			.name		= "D-4P-W::status",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "D-4P-W:green:internet",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "D-4P-W:red:internet",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 7,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 
@@ -1609,45 +769,6 @@ static struct board_info __initdata board_spw500v = {
 		.gpio_int		= 34,
 		.ext_irq		= 2,
 		.cs			= 2,
-	},
-
-	.leds = {
-		{
-			.name		= "SPW500V:red:power",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-		{
-			.name		= "SPW500V:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "SPW500V:green:ppp",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{	.name		= "SPW500V:green:pstn",
-			.gpio		= 28,
-			.active_low	= 1,
-		},
-		{
-			.name		= "SPW500V:green:voip",
-			.gpio		= 32,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 33,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 
@@ -1681,44 +802,6 @@ static struct board_info __initdata board_96348sv = {
 		.cs			= 2,
 		.ext_irq		= 2,
 	},
-
-	.leds = {
-		{
-			.name		= "MAGIC:green:voip",
-			.gpio		= 22,
-			.active_low	= 1,
-		},
-		{
-			.name		= "MAGIC:green:adsl",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "MAGIC:green:wifi",
-			.gpio		= 28,
-		},
-		{
-			.name		= "MAGIC:green:usb",
-			.gpio		= 35,
-			.active_low	= 1,
-		},
-		{
-			.name		= "MAGIC:green:hpna",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "MAGIC:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "MAGIC:green:stop",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-	},
 };
 
 static struct board_info __initdata board_V2500V_BB = {
@@ -1738,44 +821,6 @@ static struct board_info __initdata board_V2500V_BB = {
 		.phy_id			= 0,
                 .force_speed_100        = 1,
                 .force_duplex_full      = 1,
-	},
-
-	.leds =	{
-		{
-			.name		= "V2500V_BB:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "V2500V_BB:red:power",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-		{
-			.name		= "V2500V_BB:green:adsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{	.name		= "V2500V_BB:green:ppp",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "V2500V_BB:green:wireless",
-			.gpio		= 6,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 31,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 
@@ -1797,24 +842,6 @@ static struct board_info __initdata board_CPVA502plus = {
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
 	},
-
-	.leds = {
-		{
-			.name		= "CPVA502+:green:phone",
-			.gpio		= 0,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA502+:green:link",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA502+:green:feth1", /* FIXME:does gpio4 enable eth1 phy? */
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-	},
 };
 
 /* NetGear DG834G v4 */
@@ -1833,40 +860,6 @@ static struct board_info __initdata board_96348W3 = {
 	},
 
 	.has_ohci0	 		= 1,
-
-	.leds = {
-		{
-			.name		= "96348W3:green:power",
-			.gpio		= 0,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96348W3:red:power",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348W3::adsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96348W3::internet",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-			{
-			.desc		= "reset",
-			.gpio		= 6,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			},
-	},
 };
 
 #endif
@@ -1899,33 +892,6 @@ static struct board_info __initdata board_96358vw = {
 	.has_ohci0 = 1,
 	.has_pccard = 1,
 	.has_ehci0 = 1,
-
-	.leds = {
-		{
-			.name		= "96358VW:green:adsl-fail",
-			.gpio		= 15,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96358VW:green:ppp",
-			.gpio		= 22,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96358VW:green:ppp-fail",
-			.gpio		= 23,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96358VW:green:power",
-			.gpio		= 4,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96358VW:green:stop",
-			.gpio		= 5,
-		},
-	},
 };
 
 static struct board_info __initdata board_96358vw2 = {
@@ -1952,29 +918,6 @@ static struct board_info __initdata board_96358vw2 = {
 	.has_ohci0 = 1,
 	.has_pccard = 1,
 	.has_ehci0 = 1,
-
-	.leds = {
-		{
-			.name		= "96358VW2:green:adsl",
-			.gpio		= 22,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96358VW2:green:ppp-fail",
-			.gpio		= 23,
-		},
-		{
-			.name		= "96358VW2:green:power",
-			.gpio		= 5,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96358VW2:green:stop",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-	},
 };
 
 static struct board_info __initdata board_CPVA642 = {
@@ -1993,78 +936,6 @@ static struct board_info __initdata board_CPVA642 = {
 
 	.has_ohci0 = 1,
 	.has_ehci0 = 1,
-
-	.leds = {
-		{
-			.name		= "CPVA642:red:power",
-			.gpio		= 14,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA642:green:power",
-			.gpio		= 11,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "CPVA642:red:wifi",
-			.gpio		= 6,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA642:green:wifi",
-			.gpio		= 28,
-			.active_low	= 0,
-		},
-		{
-			.name		= "CPVA642:red:link",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA642:green:link",
-			.gpio		= 10,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA642:green:ether",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA642:green:phone1",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA642:green:phone2",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CPVA642:green:usb",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-    },
-
-	.buttons = {
-		{
-			.desc           = "reset",
-			.gpio           = 36,
-			.active_low     = 1,
-			.type           = EV_KEY,
-			.code           = KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 37,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 
@@ -2090,99 +961,6 @@ static struct board_info __initdata board_AGPFS0 = {
 
 	.has_ohci0 = 1,
 	.has_ehci0 = 1,
-
-	.leds = {
-		{
-			.name		= "AGPF-S0:red:power",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:green:power",
-			.gpio		= 4,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "AGPF-S0:red:service",
-			.gpio		= 7,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:green:service",
-			.gpio		= 6,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:green:adsl",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:red:adsl",
-			.gpio		= 10,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:red:wifi",
-			.gpio		= 23,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:green:wifi",
-			.gpio		= 22,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:green:internet",
-			.gpio		= 25,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:red:internet",
-			.gpio		= 24,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:red:usr1",
-			.gpio		= 27,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:green:usr1",
-			.gpio		= 26,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:red:usr2",
-			.gpio		= 30,
-			.active_low	= 1,
-		},
-		{
-			.name		= "AGPF-S0:green:usr2",
-			.gpio		= 29,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc           = "reset",
-			.gpio           = 37,
-			.active_low     = 1,
-			.type           = EV_KEY,
-			.code           = KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 34,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_DWVS0 = {
@@ -2207,94 +985,6 @@ static struct board_info __initdata board_DWVS0 = {
 
 	.has_ohci0			= 1,
 	.has_ehci0			= 1,
-
-	.leds = {
-		{
-			.name		= "DWV-S0:red:power",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:green:power",
-			.gpio		= 4,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "DWV-S0:red:internet",
-			.gpio		= 6,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:green:internet",
-			.gpio		= 7,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:green:ADSL",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:red:ADSL",
-			.gpio		= 12,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:red:wifi",
-			.gpio		= 10,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:green:VoIP",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:red:VoIP",
-			.gpio		= 0,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:red:ethernet",
-			.gpio		= 1,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:green:ethernet",
-			.gpio		= 8,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:red:USB",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DWV-S0:green:USB",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 37,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 34,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 /* D-Link DSL-274xB revison C2/C3 */
@@ -2310,44 +1000,6 @@ static struct board_info __initdata board_dsl_274xb_rev_c = {
 		.phy_id			= 0,
 		.force_speed_100	= 1,
 		.force_duplex_full	= 1,
-	},
-
-	.leds = {
-		{
-			.name		= "dsl-274xb:green:power",
-			.gpio		= 5,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "dsl-274xb:red:power",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "dsl-274xb:green:adsl",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "dsl-274xb:green:internet",
-			.gpio		= 2,
-		},
-		{
-			.name		= "dsl-274xb:red:internet",
-			.gpio		= 10,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 34,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 
@@ -2411,87 +1063,6 @@ static struct board_info __initdata board_nb4_ser_r0 = {
 	.has_pccard = 1,
 	.has_ehci0 = 1,
 
-	.leds = {
-		{
-			.name		= "NB4-SER-r0:white:adsl",
-			.gpio		= NB4_74HC64_GPIO(4),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:white:traffic",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:white:tel",
-			.gpio		= NB4_74HC64_GPIO(3),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:white:tv",
-			.gpio		= NB4_74HC64_GPIO(2),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:white:wifi",
-			.gpio		= 15,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:white:alarm",
-			.gpio		= NB4_74HC64_GPIO(0),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:red:service",
-			.gpio		= 29,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:green:service",
-			.gpio		= 30,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r0:blue:service",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 34,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 37,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "service",
-			.gpio		= 27,
-			.type		= EV_KEY,
-			.code		= BTN_0,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "clip",
-			.gpio		= 31,
-			.type		= EV_KEY,
-			.code		= BTN_1,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 	.devs = nb4_devices,
 	.num_devs = ARRAY_SIZE(nb4_devices),
 	.spis = nb4_spi_devices,
@@ -2523,87 +1094,6 @@ static struct board_info __initdata board_nb4_ser_r1 = {
 	.has_pccard = 1,
 	.has_ehci0 = 1,
 
-	.leds = {
-		{
-			.name		= "NB4-SER-r1:white:adsl",
-			.gpio		= NB4_74HC64_GPIO(4),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:white:traffic",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:white:tel",
-			.gpio		= NB4_74HC64_GPIO(3),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:white:tv",
-			.gpio		= NB4_74HC64_GPIO(2),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:white:wifi",
-			.gpio		= 15,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:white:alarm",
-			.gpio		= NB4_74HC64_GPIO(0),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:red:service",
-			.gpio		= 29,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:green:service",
-			.gpio		= 30,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r1:blue:service",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 34,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 37,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "service",
-			.gpio		= 27,
-			.type		= EV_KEY,
-			.code		= BTN_0,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "clip",
-			.gpio		= 31,
-			.type		= EV_KEY,
-			.code		= BTN_1,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 	.devs = nb4_devices,
 	.num_devs = ARRAY_SIZE(nb4_devices),
 	.spis = nb4_spi_devices,
@@ -2635,87 +1125,6 @@ static struct board_info __initdata board_nb4_ser_r2 = {
 	.has_pccard = 1,
 	.has_ehci0 = 1,
 
-	.leds = {
-		{
-			.name		= "NB4-SER-r2:white:adsl",
-			.gpio		= NB4_74HC64_GPIO(4),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:white:traffic",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:white:tel",
-			.gpio		= NB4_74HC64_GPIO(3),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:white:tv",
-			.gpio		= NB4_74HC64_GPIO(2),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:white:wifi",
-			.gpio		= 15,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:white:alarm",
-			.gpio		= NB4_74HC64_GPIO(0),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:red:service",
-			.gpio		= 29,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:green:service",
-			.gpio		= 30,
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-SER-r2:blue:service",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 34,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 37,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "service",
-			.gpio		= 27,
-			.type		= EV_KEY,
-			.code		= BTN_0,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "clip",
-			.gpio		= 31,
-			.type		= EV_KEY,
-			.code		= BTN_1,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 	.devs = nb4_devices,
 	.num_devs = ARRAY_SIZE(nb4_devices),
 	.spis = nb4_spi_devices,
@@ -2747,82 +1156,6 @@ static struct board_info __initdata board_nb4_fxc_r1 = {
 	.has_pccard = 1,
 	.has_ehci0 = 1,
 
-	.leds = {
-		{
-			.name		= "NB4-FXC-r1:white:adsl",
-			.gpio		= NB4_74HC64_GPIO(4),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r1:white:traffic",
-			.gpio		= 2,
-		},
-		{
-			.name		= "NB4-FXC-r1:white:tel",
-			.gpio		= NB4_74HC64_GPIO(3),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r1:white:tv",
-			.gpio		= NB4_74HC64_GPIO(2),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r1:white:wifi",
-			.gpio		= 15,
-		},
-		{
-			.name		= "NB4-FXC-r1:white:alarm",
-			.gpio		= NB4_74HC64_GPIO(0),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r1:red:service",
-			.gpio		= 29,
-		},
-		{
-			.name		= "NB4-FXC-r1:green:service",
-			.gpio		= 30,
-		},
-		{
-			.name		= "NB4-FXC-r1:blue:service",
-			.gpio		= 4,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 34,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 37,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "service",
-			.gpio		= 27,
-			.type		= EV_KEY,
-			.code		= BTN_0,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "clip",
-			.gpio		= 31,
-			.type		= EV_KEY,
-			.code		= BTN_1,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 	.devs = nb4_devices,
 	.num_devs = ARRAY_SIZE(nb4_devices),
 	.spis = nb4_spi_devices,
@@ -2854,82 +1187,6 @@ static struct board_info __initdata board_nb4_fxc_r2 = {
 	.has_pccard = 1,
 	.has_ehci0 = 1,
 
-	.leds = {
-		{
-			.name		= "NB4-FXC-r2:white:adsl",
-			.gpio		= NB4_74HC64_GPIO(4),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r2:white:traffic",
-			.gpio		= 2,
-		},
-		{
-			.name		= "NB4-FXC-r2:white:tel",
-			.gpio		= NB4_74HC64_GPIO(3),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r2:white:tv",
-			.gpio		= NB4_74HC64_GPIO(2),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r2:white:wifi",
-			.gpio		= 15,
-		},
-		{
-			.name		= "NB4-FXC-r2:white:alarm",
-			.gpio		= NB4_74HC64_GPIO(0),
-			.active_low	= 1,
-		},
-		{
-			.name		= "NB4-FXC-r2:red:service",
-			.gpio		= 29,
-		},
-		{
-			.name		= "NB4-FXC-r2:green:service",
-			.gpio		= 30,
-		},
-		{
-			.name		= "NB4-FXC-r2:blue:service",
-			.gpio		= 4,
-		},
-	},
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 34,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 37,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "service",
-			.gpio		= 27,
-			.type		= EV_KEY,
-			.code		= BTN_0,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "clip",
-			.gpio		= 31,
-			.type		= EV_KEY,
-			.code		= BTN_1,
-			.active_low	= 1,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 	.devs = nb4_devices,
 	.num_devs = ARRAY_SIZE(nb4_devices),
 	.spis = nb4_spi_devices,
@@ -2987,55 +1244,6 @@ static struct board_info __initdata board_ct6373_1 = {
 		.force_duplex_full	= 1,
 	},
 
-	.leds = {
-		{
-			.name		= "CT6373-1:green:power",
-			.gpio		= 0,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "CT6373-1:green:usb",
-			.gpio		= 3,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CT6373-1:green:wlan",
-			.gpio		= 9,
-			.active_low	= 1,
-		},
-		{
-			.name		= "CT6373-1:green:adsl",
-			.gpio		= CT6373_74HC64_GPIO(0),
-			.active_low	= 1,
-		},
-		{
-			.name		= "CT6373-1:green:line",
-			.gpio		= CT6373_74HC64_GPIO(1),
-			.active_low	= 1,
-		},
-		{
-			.name		= "CT6373-1:green:fxs1",
-			.gpio		= CT6373_74HC64_GPIO(2),
-			.active_low	= 1,
-		},
-		{
-			.name		= "CT6373-1:green:fxs2",
-			.gpio		= CT6373_74HC64_GPIO(3),
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 35,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
-
 	.devs = ct6373_devices,
 	.num_devs = ARRAY_SIZE(ct6373_devices),
 	.spis = ct6373_spi_devices,
@@ -3057,25 +1265,6 @@ static struct board_info __initdata board_HW520 = {
 		.force_speed_100        = 1,
 		.force_duplex_full      = 1,
 	},
-
-	.leds = {
-		{
-			.name		= "HW520:green:net",
-			.gpio		= 32,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 37,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
 static struct board_info __initdata board_HW553 = {
@@ -3094,56 +1283,6 @@ static struct board_info __initdata board_HW553 = {
 
 	.has_ohci0 = 1,
 	.has_ehci0 = 1,
-
-	.leds = {
-		{
-			.name		= "HW553:red:lan",
-			.gpio		= 34,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HW553:blue:lan",
-			.gpio		= 35,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HW553:red:adsl",
-			.gpio		= 22,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HW553:blue:adsl",
-			.gpio		= 23,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HW553:red:power",
-			.gpio		= 5,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-
-		{
-			.name		= "HW553:blue:power",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HW553:red:wifi",
-			.gpio		= 25,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HW553:red:internetkey",
-			.gpio		= 12,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HW553:blue:internetkey",
-			.gpio		= 13,
-			.active_low	= 1,
-		},
-	},
 };
 
 static struct board_info __initdata board_HW556 = {
@@ -3167,61 +1306,6 @@ static struct board_info __initdata board_HW556 = {
 		.phy_id				= 0,
 		.force_speed_100		= 1,
 		.force_duplex_full		= 1,
-	},
-
-	.leds = {
-		{
-			.name			= "HW556:red:dsl",
-			.gpio			= 2,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:power",
-			.gpio			= 3,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "HW556:red:all",
-			.gpio			= 6,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "help",
-			.gpio			= 8,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_HELP,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "wlan",
-			.gpio			= 9,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "restart",
-			.gpio			= 10,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "reset",
-			.gpio			= 11,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_CONFIG,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 static struct board_info __initdata board_HW556_A = {
@@ -3248,105 +1332,6 @@ static struct board_info __initdata board_HW556_A = {
 		.phy_id				= 0,
 		.force_speed_100		= 1,
 		.force_duplex_full		= 1,
-	},
-
-	.leds = {
-		{
-			.name			= "HW556:green:lan1",
-			.gpio			= 0,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan2",
-			.gpio			= 1,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:dsl",
-			.gpio			= 2,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:power",
-			.gpio			= 3,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "HW556:red:message",
-			.gpio			= 12,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan1",
-			.gpio			= 13,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:hspa",
-			.gpio			= 15,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan2",
-			.gpio			= 22,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan3",
-			.gpio			= 23,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan3",
-			.gpio			= 26,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan4",
-			.gpio			= 27,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan4",
-			.gpio			= 28,
-			.active_low		= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "help",
-			.gpio			= 8,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_HELP,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "wlan",
-			.gpio			= 9,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "restart",
-			.gpio			= 10,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "reset",
-			.gpio			= 11,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_CONFIG,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
 	},
 };
 static struct board_info __initdata board_HW556_B = {
@@ -3375,111 +1360,6 @@ static struct board_info __initdata board_HW556_B = {
 		.force_speed_100		= 1,
 		.force_duplex_full		= 1,
 	},
-
-	.leds = {
-		{
-			.name			= "HW556:red:message",
-			.gpio			= 0,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:hspa",
-			.gpio			= 1,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:dsl",
-			.gpio			= 2,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:power",
-			.gpio			= 3,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "HW556:red:all",
-			.gpio			= 6,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "HW556:green:lan1",
-			.gpio			= 12,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan1",
-			.gpio			= 13,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan2",
-			.gpio			= 15,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan2",
-			.gpio			= 22,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan3",
-			.gpio			= 23,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan3",
-			.gpio			= 26,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan4",
-			.gpio			= 27,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan4",
-			.gpio			= 28,
-			.active_low		= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "help",
-			.gpio			= 8,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_HELP,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "wlan",
-			.gpio			= 9,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "restart",
-			.gpio			= 10,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "reset",
-			.gpio			= 11,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_CONFIG,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 static struct board_info __initdata board_HW556_C = {
 	.name					= "HW556_C",
@@ -3507,111 +1387,6 @@ static struct board_info __initdata board_HW556_C = {
 		.force_speed_100		= 1,
 		.force_duplex_full		= 1,
 	},
-
-	.leds = {
-		{
-			.name			= "HW556:red:message",
-			.gpio			= 0,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:hspa",
-			.gpio			= 1,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:dsl",
-			.gpio			= 2,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:power",
-			.gpio			= 3,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "HW556:red:all",
-			.gpio			= 6,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "HW556:green:lan1",
-			.gpio			= 12,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan1",
-			.gpio			= 13,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan2",
-			.gpio			= 15,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan2",
-			.gpio			= 22,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan3",
-			.gpio			= 23,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan3",
-			.gpio			= 26,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:green:lan4",
-			.gpio			= 27,
-			.active_low		= 1,
-		},
-		{
-			.name			= "HW556:red:lan4",
-			.gpio			= 28,
-			.active_low		= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "help",
-			.gpio			= 8,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_HELP,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "wlan",
-			.gpio			= 9,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "restart",
-			.gpio			= 10,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "reset",
-			.gpio			= 11,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_CONFIG,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 
  /* T-Home Speedport W 303V Typ B */
@@ -3626,57 +1401,6 @@ static struct board_info __initdata board_spw303v = {
 		.has_phy 		= 1,
 		.use_internal_phy 	= 1,
 	},
-
-	.leds = {
-		{
-			.name		= "spw303v:green:power+adsl",
-			.gpio		= 22,
-			.active_low 	= 1,
-		},
-		{
-			.name		= "spw303v:red:power+adsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "spw303v:green:ppp",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "spw303v:green:ses",
-			.gpio		= 0,
-			.active_low	= 1,
-		},
-		{
-			.name		= "spw303v:green:voip",
-			.gpio		= 27,
-			.active_low	= 1,
-		},
-		{
-			.name		= "spw303v:green:pots",
-			.gpio		= 31,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 11,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "ses",
-			.gpio		= 37,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	}
 };
 
 /* D-Link DVA-G3810BN/TL */
@@ -3706,43 +1430,6 @@ static struct board_info __initdata board_DVAG3810BN = {
 	.has_ohci0		= 1,
 	.has_pccard		= 1,
 	.has_ehci0		= 1,
-
-	.leds = {
-		{
-			.name	= "DVAG3810BN::voip",
-			.gpio	= 1,
-		},
-		{
-			.name	= "DVAG3810BN::dsl",
-			.gpio	= 22,
-			.active_low  = 1,
-		},
-		{
-			.name	= "DVAG3810BN::internet",
-			.gpio	= 23,
-			.active_low  = 1,
-		},
-		{
-			.name	= "DVAG3810BN::power",
-			.gpio	= 4,
-			.default_trigger = "default-on",
-		},
-		{
-			.name	= "DVAG3810BN::stop",
-			.gpio	= 5,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc	= "reset",
-			.gpio	= 34,
-			.active_low = 1,
-			.type	= EV_KEY,
-			.code	= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
 };
 #endif
 
@@ -3801,41 +1488,6 @@ static struct board_info __initdata board_nb6 = {
 		},
 	},
 
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 24,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low	= 1,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 25,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low	= 1,
-		},
-		{
-			.desc		= "wlan",
-			.gpio		= 12,
-			.type		= EV_KEY,
-			.code		= KEY_WLAN,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low	= 1,
-		},
-		{
-			.desc		= "service",
-			.gpio		= 10,
-			.type		= EV_KEY,
-			.code		= BTN_0,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low	= 1,
-		},
-	},
-
 	.devs = nb6_devices,
 	.num_devs = ARRAY_SIZE(nb6_devices),
 };
@@ -3888,40 +1540,6 @@ static struct board_info __initdata board_HG622 = {
 			},
 		},
 	},
-
-	.leds = {
-		{
-			.name		= "HG622:green:adsl",
-			.gpio		= 2,
-		},
-		{
-			.name		= "HG622:green:inet",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "HG622:green:power",
-			.gpio		= 22,
-			.default_trigger = "default-on",
-			.active_low	= 1,
-		},
-		{
-			.name		= "HG622:green:usb",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc           = "reset",
-			.gpio			= 34,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low		= 1,
-		},
-	},
 };
 
 static struct board_info __initdata board_P870HW51A = {
@@ -3955,53 +1573,6 @@ static struct board_info __initdata board_P870HW51A = {
 				.phy_id	= 4,
 				.name	= "port4",
 			},
-		},
-	},
-
-	.leds = {
-		{
-			.name		= "P870HW-51a:green:power",
-			.gpio		= 0,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "P870HW-51a:green:dsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "P870HW-51a:green:inet",
-			.gpio		= 22,
-			.active_low	= 1,
-		},
-		{
-			.name		= "P870HW-51a:orange:wps",
-			.gpio		= 24,
-			.active_low	= 1,
-		},
-		{
-			.name		= "P870HW-51a:red:inet",
-			.gpio		= 33,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc		= "reset",
-			.gpio		= 34,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low	= 1,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 35,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low	= 1,
 		},
 	},
 };
@@ -4074,42 +1645,6 @@ static struct board_info __initdata board_VR3025un = {
 			},
 		},
 	},
-
-	.leds = {
-		{
-			.name		= "VR-3025un:green:dsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "VR-3025un:green:inet",
-			.gpio		= 5,
-		},
-		{
-			.name		= "VR-3025un:green:power",
-			.gpio		= 22,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "VR-3025un:red:power",
-			.gpio		= 24,
-		},
-		{
-			.name		= "VR-3025un:red:inet",
-			.gpio		= 31,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "reset",
-			.gpio			= 34,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-			.active_low		= 1,
-		},
-	},
 };
 
 static struct b53_platform_data WAP5813n_b53_pdata = {
@@ -4145,58 +1680,6 @@ static struct board_info __initdata board_WAP5813n = {
 				.force_duplex_full = 1,
 				.name  = "RGMII",
 			},
-		},
-	},
-
-	.leds = {
-		{
-			.name		= "WAP-5813n:green:power",
-			.gpio		= 22,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "WAP-5813n:red:power",
-			.gpio        = 24,
-		},
-		{
-			.name		= "WAP-5813n:green:inet",
-			.gpio		= 5,
-		},
-		{
-			.name		= "WAP-5813n:red:inet",
-			.gpio		= 31,
-		},
-		{
-			.name		= "WAP-5813n:green:wps",
-			.gpio		= 23,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "wlan",
-			.gpio			= 32,
-			.active_low	= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "reset",
-			.gpio			= 34,
-			.active_low	= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "wps",
-			.gpio			= 35,
-			.active_low	= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WPS_BUTTON,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
 		},
 	},
 
@@ -4247,92 +1730,6 @@ static struct board_info __initdata board_DGND3700_3800B = {
 		},
 	},
 
-	.leds = {
-		{
-			.name		= "DGND3700_3800B:green:dsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:red:inet",
-			.gpio		= 4,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:green:inet",
-			.gpio		= 5,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:green:wps",
-			.gpio		= 11,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:green:usb-front",
-			.gpio		= 13,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:green:usb-back",
-			.gpio		= 14,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:red:power",
-			.gpio		= 22,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:green:lan",
-			.gpio		= 23,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:green:power",
-			.gpio		= 24,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "DGND3700_3800B:green:wifi2g",
-			.gpio		= 26,
-			.active_low	= 1,
-		},
-		{
-			.name		= "DGND3700_3800B:blue:wifi5g",
-			.gpio		= 27,
-			.active_low	= 1,
-		},
-	},
-
-	.buttons = {
-		{
-			.desc			= "wlan",
-			.gpio			= 10,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "reset",
-			.gpio		= 12,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_RESTART,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc		= "wps",
-			.gpio		= 35,
-			.active_low	= 1,
-			.type		= EV_KEY,
-			.code		= KEY_WPS_BUTTON,
-			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
-
 	.spis = DGND3700_3800B_spi_devices,
 	.num_spis = ARRAY_SIZE(DGND3700_3800B_spi_devices),
 };
@@ -4372,33 +1769,6 @@ static struct board_info __initdata board_96368mvwg = {
 		},
 	},
 
-	.leds = {
-		{
-			.name		= "96368MVWG:green:adsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96368MVWG:green:ppp",
-			.gpio		= 5,
-		},
-		{
-			.name		= "96368MVWG:green:power",
-			.gpio		= 22,
-			.active_low	= 1,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96368MVWG:green:wps",
-			.gpio		= 23,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96368MVWG:green:ppp-fail",
-			.gpio		= 31,
-		},
-	},
-
 	.has_ohci0 = 1,
 	.has_ehci0 = 1,
 };
@@ -4435,32 +1805,6 @@ static struct board_info __initdata board_96368mvngr = {
 				.phy_id	= 4,
 				.name	= "port4",
 			},
-		},
-	},
-
-	.leds = {
-		{
-			.name		= "96368MVNgr:green:adsl",
-			.gpio		= 2,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96368MVNgr:green:inet",
-			.gpio		= 5,
-		},
-		{
-			.name		= "96368MVNgr:green:power",
-			.gpio		= 22,
-			.default_trigger = "default-on",
-		},
-		{
-			.name		= "96368MVNgr:green:wps",
-			.gpio		= 23,
-			.active_low	= 1,
-		},
-		{
-			.name		= "96368MVNgr:green:inet-fail",
-			.gpio		= 3,
 		},
 	},
 
