@@ -159,12 +159,18 @@ static int bcm63xx_rng_remove(struct platform_device *pdev)
 	return 0;
 }
 
+static const struct of_device_id bcm_rng_match[] = {
+	{ .compatible = "brcm,bcm63xx-rng" },
+	{ },
+};
+
 static struct platform_driver bcm63xx_rng_driver = {
 	.probe		= bcm63xx_rng_probe,
 	.remove		= bcm63xx_rng_remove,
 	.driver		= {
 		.name	= "bcm63xx-rng",
 		.owner	= THIS_MODULE,
+		.of_match_table = bcm_rng_match,
 	},
 };
 
