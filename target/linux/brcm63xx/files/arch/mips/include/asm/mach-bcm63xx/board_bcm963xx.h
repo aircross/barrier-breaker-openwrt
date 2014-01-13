@@ -61,12 +61,6 @@ struct board_info {
 	/* DSP config */
 	struct bcm63xx_dsp_platform_data dsp;
 
-	/* External PHY reset GPIO */
-	unsigned int ephy_reset_gpio;
-
-	/* External PHY reset GPIO flags from gpio.h */
-	unsigned long ephy_reset_gpio_flags;
-
 	/* Additional platform devices */
 	struct platform_device **devs;
 	unsigned int	num_devs;

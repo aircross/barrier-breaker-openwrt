@@ -84,9 +84,6 @@ static struct board_info __initdata board_cvg834g = {
 		.has_phy		= 1,
 		.use_internal_phy	= 1,
 	},
-
-	.ephy_reset_gpio		= 36,
-	.ephy_reset_gpio_flags		= GPIOF_INIT_HIGH,
 };
 #endif
 
@@ -2228,10 +2225,6 @@ int __init board_register_devices(void)
 		spi_register_board_info(board.spis, board.num_spis);
 
 	bcm63xx_flash_register(board.has_caldata, board.caldata);
-
-	if (board.ephy_reset_gpio && board.ephy_reset_gpio_flags)
-		gpio_request_one(board.ephy_reset_gpio,
-				board.ephy_reset_gpio_flags, "ephy-reset");
 
 	/* register any fixups */
 	for (i = 0; i < board.has_caldata; i++) {
