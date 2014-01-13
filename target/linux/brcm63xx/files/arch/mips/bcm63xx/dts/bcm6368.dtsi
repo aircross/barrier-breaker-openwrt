@@ -196,7 +196,6 @@
 		rng: rng@4180 {
 			compatible = "brcm,bcm63xx-rng";
 			reg = <0x4180 0x14>;
-			status = "disabled";
 		};
 	};
 };

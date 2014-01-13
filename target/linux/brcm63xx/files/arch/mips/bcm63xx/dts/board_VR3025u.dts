@@ -24,10 +24,6 @@
 		serial@100 {
 			status = "ok";
 		};
-
-		rng@4180 {
-			status = "ok";
-		};
 	};
 
 	gpio-keys-polled {
