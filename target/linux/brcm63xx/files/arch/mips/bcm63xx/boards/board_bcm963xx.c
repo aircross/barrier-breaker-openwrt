@@ -356,7 +356,7 @@ static struct board_info __initdata board_96328avng = {
 	},
 };
 
-static struct board_info __initdata board_96328A_1241N = {
+static struct board_info __initdata board_AR5381u = {
 	.name					= "96328A-1241N",
 	.expected_cpu_id			= 0x6328,
 
@@ -394,18 +394,18 @@ static struct board_info __initdata board_96328A_1241N = {
 
 	.leds = {
 		{
-			.name			= "96328A-1241N:green:power",
+			.name			= "AR-5381u:green:power",
 			.gpio			= 4,
 			.active_low		= 1,
 			.default_trigger	= "default-on",
 		},
 		{
-			.name			= "96328A-1241N:red:alarm",
+			.name			= "AR-5381u:red:alarm",
 			.gpio			= 2,
 			.active_low		= 1,
 		},
 		{
-			.name			= "96328A-1241N:green:inet",
+			.name			= "AR-5381u:green:inet",
 			.gpio			= 3,
 			.active_low		= 1,
 		},
@@ -423,7 +423,7 @@ static struct board_info __initdata board_96328A_1241N = {
 	},
 };
 
-static struct board_info __initdata board_96328A_1441N1 = {
+static struct board_info __initdata board_AR5387un = {
 	.name					= "96328A-1441N1",
 	.expected_cpu_id			= 0x6328,
 
@@ -461,24 +461,24 @@ static struct board_info __initdata board_96328A_1441N1 = {
 
 	.leds = {
 		{
-			.name			= "96328A-1441N1:green:power",
+			.name			= "AR-5387un:green:power",
 			.gpio			= 8,
 			.default_trigger	= "default-on",
 		},
 		{
-			.name			= "96328A-1441N1:red:power",
+			.name			= "AR-5387un:red:power",
 			.gpio			= 4,
 		},
 		{
-			.name			= "96328A-1441N1:green:inet",
+			.name			= "AR-5387un:green:inet",
 			.gpio			= 7,
 		},
 		{
-			.name			= "96328A-1441N1:red:inet",
+			.name			= "AR-5387un:red:inet",
 			.gpio			= 1,
 		},
 		{
-			.name			= "96328A-1441N1:green:dsl",
+			.name			= "AR-5387un:green:dsl",
 			.gpio			= 11,
 			.active_low		= 1,
 		},
@@ -566,7 +566,7 @@ static struct board_info __initdata board_963281TAN = {
 	},
 };
 
-static struct board_info __initdata board_963281T_TEF = {
+static struct board_info __initdata board_A4001N = {
 	.name					= "963281T_TEF",
 	.expected_cpu_id			= 0x6328,
 
@@ -604,63 +604,63 @@ static struct board_info __initdata board_963281T_TEF = {
 
 	.leds = {
 		{
-			.name			= "963281T_TEF:green:power",
+			.name			= "A4001N:green:power",
 			.gpio			= 4,
 			.active_low		= 1,
 			.default_trigger	= "default-on",
 		},
 		{
-			.name			= "963281T_TEF:red:power",
+			.name			= "A4001N:red:power",
 			.gpio			= 8,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:green:inet",
+			.name			= "A4001N:green:inet",
 			.gpio			= 11,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:red:inet",
+			.name			= "A4001N:red:inet",
 			.gpio			= 2,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:green:ppp",
+			.name			= "A4001N:green:ppp",
 			.gpio			= 3,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:red:ppp",
+			.name			= "A4001N:red:ppp",
 			.gpio			= 5,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:green:3g",
+			.name			= "A4001N:green:3g",
 			.gpio			= 6,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:red:3g",
+			.name			= "A4001N:red:3g",
 			.gpio			= 7,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:green:wlan",
+			.name			= "A4001N:green:wlan",
 			.gpio			= 9,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:red:wlan",
+			.name			= "A4001N:red:wlan",
 			.gpio			= 10,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:green:eth",
+			.name			= "A4001N:green:eth",
 			.gpio			= 31,
 			.active_low		= 1,
 		},
 		{
-			.name			= "963281T_TEF:red:eth",
+			.name			= "A4001N:red:eth",
 			.gpio			= 20,
 			.active_low		= 1,
 		},
@@ -1143,7 +1143,6 @@ static struct board_info __initdata board_96348gw_10 = {
 
 	.has_ohci0			= 1,
 	.has_pccard			= 1,
-	.has_ehci0			= 1,
 
 	.has_dsp			= 1,
 	.dsp = {
@@ -1218,7 +1217,6 @@ static struct board_info __initdata board_96348gw_11 = {
 
 	.has_ohci0 = 1,
 	.has_pccard = 1,
-	.has_ehci0 = 1,
 
 	.leds = {
 		{
@@ -1336,7 +1334,6 @@ static struct board_info __initdata board_ct536_ct5621 = {
 
 	.has_ohci0 = 1,
 	.has_pccard = 1,
-	.has_ehci0 = 1,
 
 	.leds = {
 		{
@@ -1363,7 +1360,7 @@ static struct board_info __initdata board_ct536_ct5621 = {
 	},
 };
 
-static struct board_info __initdata board_96348A_122 = {
+static struct board_info __initdata board_CT5365 = {
 	.name				= "96348A-122",
 	.expected_cpu_id		= 0x6348,
 
@@ -1382,18 +1379,18 @@ static struct board_info __initdata board_96348A_122 = {
 
 	.leds = {
 		{
-			.name		= "96348A-122:green:power",
+			.name		= "CT-5365:green:power",
 			.gpio		= 0,
 			.active_low	= 1,
 			.default_trigger = "default-on",
 		},
 		{
-			.name		= "96348A-122:red:alarm",
+			.name		= "CT-5365:red:alarm",
 			.gpio		= 2,
 			.active_low	= 1,
 		},
 		{
-			.name		= "96348A-122:green:wps",
+			.name		= "CT-5365:green:wps",
 			.gpio		= 6,
 			.active_low	= 1,
 		},
@@ -1625,7 +1622,6 @@ static struct board_info __initdata board_FAST2404 = {
 
 	.has_ohci0			= 1,
 	.has_pccard			= 1,
-	.has_ehci0			= 1,
 };
 
 static struct board_info __initdata board_FAST2604 = {
@@ -1893,7 +1889,6 @@ static struct board_info __initdata board_96348sv = {
 
 	.has_ohci0			= 1,
 	.has_pccard			= 1,
-	.has_ehci0			= 1,
 
 	.has_dsp			= 1,
 	.dsp = {
@@ -3290,14 +3285,8 @@ static struct board_info __initdata board_HW553 = {
 
 	.has_uart0			= 1,
 
-	.has_enet0                      = 1,
 	.has_enet1                      = 1,
 	.has_pci                        = 1,
-
-	.enet0 = {
-		.has_phy                = 1,
-		.use_internal_phy       = 1,
-	},
 
 	.enet1 = {
 		.has_phy		= 1,
@@ -4303,10 +4292,10 @@ static const struct board_info __initconst *bcm963xx_boards[] = {
 #endif
 #ifdef CONFIG_BCM63XX_CPU_6328
 	&board_96328avng,
-	&board_96328A_1241N,
-	&board_96328A_1441N1,
+	&board_AR5381u,
+	&board_AR5387un,
 	&board_963281TAN,
-	&board_963281T_TEF,
+	&board_A4001N,
 	&board_dsl_274xb_f1,
 #endif
 #ifdef CONFIG_BCM63XX_CPU_6338
@@ -4338,7 +4327,7 @@ static const struct board_info __initconst *bcm963xx_boards[] = {
 	&board_V2500V_BB,
 	&board_V2110,
 	&board_ct536_ct5621,
-	&board_96348A_122,
+	&board_CT5365,
 	&board_CPVA502plus,
 	&board_96348W3,
 #endif
