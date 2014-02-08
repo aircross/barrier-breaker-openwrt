@@ -11,8 +11,7 @@ included.
 Signed-off-by: Jonas Gorski <jogo@openwrt.org>
 ---
  arch/mips/Kconfig         | 1 -
- arch/mips/bcm63xx/Kconfig | 8 ++++++++
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ 1 files changed, 1 deletion(-)
 
 --- a/arch/mips/Kconfig
 +++ b/arch/mips/Kconfig
@@ -24,47 +23,3 @@ Signed-off-by: Jonas Gorski <jogo@openwrt.org>
  	select NR_CPUS_DEFAULT_2
  	select SYS_SUPPORTS_32BIT_KERNEL
  	select SYS_SUPPORTS_BIG_ENDIAN
---- a/arch/mips/bcm63xx/Kconfig
-+++ b/arch/mips/bcm63xx/Kconfig
-@@ -3,33 +3,41 @@ menu "CPU support"
- 
- config BCM63XX_CPU_3368
- 	bool "support 3368 CPU"
-+	select SYS_HAS_CPU_BMIPS4350
- 	select HW_HAS_PCI
- 
- config BCM63XX_CPU_6328
- 	bool "support 6328 CPU"
-+	select SYS_HAS_CPU_BMIPS4350
- 	select HW_HAS_PCI
- 
- config BCM63XX_CPU_6338
- 	bool "support 6338 CPU"
-+	select SYS_HAS_CPU_BMIPS32_3300
- 	select HW_HAS_PCI
- 
- config BCM63XX_CPU_6345
- 	bool "support 6345 CPU"
-+	select SYS_HAS_CPU_BMIPS32_3300
- 
- config BCM63XX_CPU_6348
- 	bool "support 6348 CPU"
-+	select SYS_HAS_CPU_BMIPS32_3300
- 	select HW_HAS_PCI
- 
- config BCM63XX_CPU_6358
- 	bool "support 6358 CPU"
-+	select SYS_HAS_CPU_BMIPS4350
- 	select HW_HAS_PCI
- 
- config BCM63XX_CPU_6362
- 	bool "support 6362 CPU"
-+	select SYS_HAS_CPU_BMIPS4350
- 	select HW_HAS_PCI
- 
- config BCM63XX_CPU_6368
- 	bool "support 6368 CPU"
-+	select SYS_HAS_CPU_BMIPS4350
- 	select HW_HAS_PCI
- endmenu
- 

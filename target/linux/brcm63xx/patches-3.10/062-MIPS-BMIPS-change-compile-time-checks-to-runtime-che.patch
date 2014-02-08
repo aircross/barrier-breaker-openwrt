@@ -18,23 +18,11 @@ V1 -> V2:
   * use switch (cpu_type()) instead of if () else if () ...
   * split the smp ops into bmips43xx and bmips5000
 
- arch/mips/bcm63xx/prom.c      |   2 +-
  arch/mips/include/asm/bmips.h |   3 +-
  arch/mips/kernel/bmips_vec.S  |  55 ++++++--
  arch/mips/kernel/smp-bmips.c  | 312 +++++++++++++++++++++++++-----------------
- 4 files changed, 235 insertions(+), 137 deletions(-)
+ 3 files changed, 235 insertions(+), 137 deletions(-)
 
---- a/arch/mips/bcm63xx/prom.c
-+++ b/arch/mips/bcm63xx/prom.c
-@@ -61,7 +61,7 @@ void __init prom_init(void)
- 
- 	if (IS_ENABLED(CONFIG_CPU_BMIPS4350) && IS_ENABLED(CONFIG_SMP)) {
- 		/* set up SMP */
--		register_smp_ops(&bmips_smp_ops);
-+		register_smp_ops(&bmips43xx_smp_ops);
- 
- 		/*
- 		 * BCM6328 might not have its second CPU enabled, while BCM3368
 --- a/arch/mips/include/asm/bmips.h
 +++ b/arch/mips/include/asm/bmips.h
 @@ -47,7 +47,8 @@

@@ -12,9 +12,8 @@ V1 -> V2:
  * use SMP_UP (ops) in case of BMIPS32_3300
 
  arch/mips/Kconfig             |  1 +
- arch/mips/bcm63xx/prom.c      |  2 +-
  arch/mips/include/asm/bmips.h | 26 ++++++++++++++++++++++++++
- 3 files changed, 28 insertions(+), 1 deletion(-)
+ 2 files changed, 28 insertions(+), 1 deletion(-)
 
 --- a/arch/mips/Kconfig
 +++ b/arch/mips/Kconfig
@@ -26,17 +25,6 @@ V1 -> V2:
  	bool
  
  config CPU_BMIPS4350
---- a/arch/mips/bcm63xx/prom.c
-+++ b/arch/mips/bcm63xx/prom.c
-@@ -61,7 +61,7 @@ void __init prom_init(void)
- 
- 	if (IS_ENABLED(CONFIG_CPU_BMIPS4350) && IS_ENABLED(CONFIG_SMP)) {
- 		/* set up SMP */
--		register_smp_ops(&bmips43xx_smp_ops);
-+		register_bmips_smp_ops();
- 
- 		/*
- 		 * BCM6328 might not have its second CPU enabled, while BCM3368
 --- a/arch/mips/include/asm/bmips.h
 +++ b/arch/mips/include/asm/bmips.h
 @@ -46,9 +46,35 @@
