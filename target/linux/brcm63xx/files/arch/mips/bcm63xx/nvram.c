@@ -16,6 +16,7 @@
 #include <linux/kernel.h>
 #include <linux/if_ether.h>
 #include <linux/sizes.h>
+#include <linux/spinlock.h>
 
 #include <bcm63xx_nvram.h>
 
@@ -40,6 +41,29 @@ struct bcm963xx_nvram {
 
 static struct bcm963xx_nvram nvram;
 static int mac_addr_used;
+
+/*
+ * nvram sproms
+ */
+struct bcm63xx_nvram_sprom {
+	int bus;
+	int slot;
+	u8 macaddr[ETH_ALEN];
+};
+
+static int bcm63xx_nvram_num_sproms;
+static struct bcm63xx_nvram_sprom bcm63xx_nvram_sproms[NVRAM_MAX_SPROMS] = {
+	{
+		.slot = -1,
+		.bus = -1,
+	},
+	{
+		.slot = -1,
+		.bus = -1,
+	},
+};
+
+DEFINE_SPINLOCK(bcm63xx_sprom_lock);
 
 /*
  * Required export for WL
@@ -135,3 +159,49 @@ unsigned int bcm63xx_nvram_get_psi_size(void)
 	return BCM63XX_DEFAULT_PSI_SIZE;
 }
 EXPORT_SYMBOL(bcm63xx_nvram_get_psi_size);
+
+int bcm63xx_nvram_get_sprom_mac_address(int bus, int slot, u8 *mac_sprom)
+{
+	int i;
+	struct bcm63xx_nvram_sprom *sprom = NULL;
+
+	for (i = 0; i < bcm63xx_nvram_num_sproms; i++) {
+		if (bcm63xx_nvram_sproms[i].bus == bus && bcm63xx_nvram_sproms[i].slot == slot) {
+			sprom = &bcm63xx_nvram_sproms[i];
+			break;
+		}
+	}
+
+	if (!sprom) {
+		int status = 0;
+		u8 mac[ETH_ALEN];
+
+		spin_lock(&bcm63xx_sprom_lock);
+
+		if (bcm63xx_nvram_num_sproms < NVRAM_MAX_SPROMS) {
+			sprom = &bcm63xx_nvram_sproms[bcm63xx_nvram_num_sproms];
+			bcm63xx_nvram_num_sproms++;
+
+			status = bcm63xx_nvram_get_mac_address(mac);
+			if (status)
+				pr_err("unable to get mac address\n");
+		} else {
+			pr_err("exceeded number of sproms\n");
+			status = -EINVAL;
+		}
+
+		spin_unlock(&bcm63xx_sprom_lock);
+
+		if (status)
+			return status;
+
+		sprom->bus = bus;
+		sprom->slot = slot;
+		memcpy(sprom->macaddr, mac, ETH_ALEN);
+	}
+
+	memcpy(mac_sprom, sprom->macaddr, ETH_ALEN);
+
+	return 0;
+}
+EXPORT_SYMBOL(bcm63xx_nvram_get_sprom_mac_address);

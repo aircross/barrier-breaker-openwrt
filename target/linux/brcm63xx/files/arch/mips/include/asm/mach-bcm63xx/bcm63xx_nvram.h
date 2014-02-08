@@ -37,4 +37,12 @@ int bcm63xx_nvram_get_mac_address(u8 *mac);
  */
 unsigned int bcm63xx_nvram_get_psi_size(void);
 
+/**
+ * bcm63xx_nvram_get_sprom_mac_address() - returns sprom mac address
+ *
+ * Registers and returns a SPROM mac address for a PCI device.
+ */
+#define NVRAM_MAX_SPROMS 2
+int bcm63xx_nvram_get_sprom_mac_address(int bus, int slot, u8 *mac_sprom);
+
 #endif /* BCM63XX_NVRAM_H */
