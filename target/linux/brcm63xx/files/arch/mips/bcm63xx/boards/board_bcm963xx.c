@@ -4211,6 +4211,140 @@ static struct board_info __initdata board_96368mvngr = {
 	.has_ehci0 = 1,
 };
 
+static struct b53_platform_data DGND3700_3800B_b53_pdata = {
+	.alias    = "eth0",
+};
+
+static struct spi_board_info DGND3700_3800B_spi_devices[] = {
+	{
+		.modalias = "b53-switch",
+		.max_speed_hz = 781000,
+		.bus_num = 0,
+		.chip_select = 1,
+		.platform_data = &DGND3700_3800B_b53_pdata,
+	}
+};
+
+static struct board_info __initdata board_DGND3700_3800B = {
+	.name				= "DGND3700_3800B",
+	.expected_cpu_id		= 0x6368,
+
+	.has_uart0			= 1,
+	.has_pci			= 1,
+	.has_ohci0			= 1,
+	.has_ehci0			= 1,
+
+	.has_caldata				= 1,
+	.caldata = {
+		{
+			.caldata_offset		= 0x1e40000,
+		},
+	},
+
+	.has_enetsw			= 1,
+	.enetsw = {
+		.used_ports = {
+			[5] = {
+				.used  = 1,
+				.phy_id  = 0xff,
+				.bypass_link = 1,
+				.force_speed = 1000,
+				.force_duplex_full = 1,
+				.name  = "RGMII",
+			},
+		},
+	},
+
+	.leds = {
+		{
+			.name		= "DGND3700_3800B:green:dsl",
+			.gpio		= 2,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:red:inet",
+			.gpio		= 4,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:green:inet",
+			.gpio		= 5,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:green:wps",
+			.gpio		= 11,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:green:usb-front",
+			.gpio		= 13,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:green:usb-back",
+			.gpio		= 14,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:red:power",
+			.gpio		= 22,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:green:lan",
+			.gpio		= 23,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:green:power",
+			.gpio		= 24,
+			.active_low	= 1,
+			.default_trigger = "default-on",
+		},
+		{
+			.name		= "DGND3700_3800B:green:wifi2g",
+			.gpio		= 26,
+			.active_low	= 1,
+		},
+		{
+			.name		= "DGND3700_3800B:blue:wifi5g",
+			.gpio		= 27,
+			.active_low	= 1,
+		},
+	},
+
+	.buttons = {
+		{
+			.desc			= "wlan",
+			.gpio			= 10,
+			.active_low		= 1,
+			.type			= EV_KEY,
+			.code			= KEY_WLAN,
+			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+		{
+			.desc		= "reset",
+			.gpio		= 12,
+			.active_low	= 1,
+			.type		= EV_KEY,
+			.code		= KEY_RESTART,
+			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+		{
+			.desc		= "wps",
+			.gpio		= 35,
+			.active_low	= 1,
+			.type		= EV_KEY,
+			.code		= KEY_WPS_BUTTON,
+			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+	},
+
+	.spis = DGND3700_3800B_spi_devices,
+	.num_spis = ARRAY_SIZE(DGND3700_3800B_spi_devices),
+};
+
 static struct board_info __initdata board_HG622 = {
 	.name				= "96368MVWG_hg622",
 	.expected_cpu_id	= 0x6368,
@@ -4680,6 +4814,7 @@ static const struct board_info __initconst *bcm963xx_boards[] = {
 #ifdef CONFIG_BCM63XX_CPU_6368
 	&board_96368mvwg,
 	&board_96368mvngr,
+	&board_DGND3700_3800B,
 	&board_HG622,
 	&board_VR3025u,
 	&board_VR3025un,
