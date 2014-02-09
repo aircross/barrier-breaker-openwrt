@@ -3281,6 +3281,43 @@ static struct board_info __initdata board_ct6373_1 = {
 	.num_spis = ARRAY_SIZE(ct6373_spi_devices),
 };
 
+static struct board_info __initdata board_HW520 = {
+	.name					= "HW6358GW_B",
+	.expected_cpu_id		= 0x6358,
+
+	.has_uart0				= 1,
+	.has_pci				= 1,
+	.has_ohci0				= 1,
+	.has_ehci0				= 1,
+
+	.has_enet1				= 1,
+	.enet1 = {
+		.has_phy			= 1,
+		.phy_id				= 0,
+		.force_speed_100        = 1,
+		.force_duplex_full      = 1,
+	},
+
+	.leds = {
+		{
+			.name		= "HW520:green:net",
+			.gpio		= 32,
+			.active_low	= 1,
+		},
+	},
+
+	.buttons = {
+		{
+			.desc		= "reset",
+			.gpio		= 37,
+			.active_low	= 1,
+			.type		= EV_KEY,
+			.code		= KEY_RESTART,
+			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+	},
+};
+
 static struct board_info __initdata board_HW553 = {
 	.name                           = "HW553",
 	.expected_cpu_id                = 0x6358,
@@ -4798,6 +4835,7 @@ static const struct board_info __initconst *bcm963xx_boards[] = {
 	&board_nb4_fxc_r1,
 	&board_nb4_fxc_r2,
 	&board_ct6373_1,
+	&board_HW520,
 	&board_HW553,
 	&board_HW556,
 	&board_HW556_A,
