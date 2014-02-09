@@ -90,6 +90,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"96368MVWG_hg622")
+			board_model="Huawei HG622"
+			status_led="HG622:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"96368M-1541N")
 			board_model="Comtrend VR-3025u"
 			status_led="VR-3025u:green:power"

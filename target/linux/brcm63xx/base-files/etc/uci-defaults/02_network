@@ -82,7 +82,8 @@ DVG3810BN)
 963281T_TEF |\
 96368M-1341N |\
 96368M-1541N |\
-96368MVNgr)
+96368MVNgr |\
+96368MVWG_hg622)
 	ucidef_set_interface_lan "eth0.1"
 	ucidef_add_switch "eth0" "1" "1"
 	ucidef_add_switch_vlan "eth0" "1" "0 1 2 3 8t"
