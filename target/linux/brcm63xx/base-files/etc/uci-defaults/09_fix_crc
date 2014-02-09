@@ -29,6 +29,7 @@ case "$board_name" in
 	CT6373-1 |\
 	DGND3700_3800B |\
 	MAGIC |\
+	P870HW-51a_v2 |\
 	V2110 |\
 	RTA770BW |\
 	RTA770W |\

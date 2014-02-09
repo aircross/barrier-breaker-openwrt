@@ -459,7 +459,6 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
   define Image/Build/Profile/VR3025UN
 	$(call Image/Build/CFE,$(1),96368M-1341N,6368,VR-3025un,,--pad 4)
   endef
-
   # Comtrend WAP-5813n
   define Image/Build/Profile/WAP5813N
 	$(call Image/Build/CFE,$(1),96369R-1231N,6368,WAP-5813n,,--pad 4)
@@ -473,6 +472,11 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
   # Netgear DGND3700/DGND3800B DGND3700_3800B
   define Image/Build/Profile/DGND3700_3800B
 	$(call Image/Build/CFEFIXUP,$(1),96368MVWG,DGND3700_3800B,6368,DGND3700_3800B,,--image-offset 0x20000)
+  endef
+
+  # ZyXEL P870HW-51a v2
+  define Image/Build/Profile/P870HW51A_V2
+	$(call Image/Build/CFEFIXUP,$(1),96368VVW,P870HW-51a_v2,6368,P870HW-51a_v2)
   endef
 endif
 
