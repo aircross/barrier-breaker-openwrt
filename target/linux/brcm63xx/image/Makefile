@@ -497,6 +497,11 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
   define Image/Build/Profile/DGND3700_3800B
 	$(call Image/Build/CFEFIXUP,$(1),96368MVWG,DGND3700_3800B,6368,DGND3700_3800B,,--image-offset 0x20000)
   endef
+
+  # ZyXEL P870HW-51a v2
+  define Image/Build/Profile/P870HW51A_V2
+	$(call Image/Build/CFEFIXUP,$(1),96368VVW,P870HW-51a_v2,6368,P870HW-51a_v2)
+  endef
 endif
 
 define Image/Build

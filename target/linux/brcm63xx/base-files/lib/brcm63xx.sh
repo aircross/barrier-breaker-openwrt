@@ -245,6 +245,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"P870HW-51a_v2")
+			board_model="ZyXEL P870HW-51a v2"
+			status_led="P870HW-51a:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"RTA770BW")
 			board_model="RTA770BW"
 			status_led="RTA770BW:green:diag"
