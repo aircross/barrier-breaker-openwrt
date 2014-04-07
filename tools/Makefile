@@ -19,7 +19,7 @@ ifdef CONFIG_GCC_USE_GRAPHITE
     BUILD_PPL_CLOOG = y
   endif
 endif
-ifneq ($(CONFIG_PACKAGE_kmod-b43)$(CONFIG_PACKAGE_kmod-b43legacy)$(CONFIG_BRCMSMAC_USE_FW_FROM_WL),)
+ifneq ($(CONFIG_PACKAGE_kmod-b43)$(CONFIG_PACKAGE_kmod-b43legacy)$(CONFIG_PACKAGE_kmod-brcmsmac),)
   BUILD_B43_TOOLS = y
 endif
 
