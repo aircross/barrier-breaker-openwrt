@@ -483,6 +483,11 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
   define Image/Build/Profile/WAP5813N
 	$(call Image/Build/CFE,$(1),96369R-1231N,6368,WAP-5813n,,--pad 4)
   endef
+
+  # Huawei HG622
+  define Image/Build/Profile/HG622
+	$(call Image/Build/CFE,$(1),96368MVWG_hg622,6368,HG622,,--pad 4)
+  endef
 endif
 
 define Image/Build

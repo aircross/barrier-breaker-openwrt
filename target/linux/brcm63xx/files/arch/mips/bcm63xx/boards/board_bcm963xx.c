@@ -4466,6 +4466,86 @@ static struct board_info __initdata board_96368mvngr = {
 	.has_ehci0 = 1,
 };
 
+static struct board_info __initdata board_HG622 = {
+	.name				= "96368MVWG_hg622",
+	.expected_cpu_id	= 0x6368,
+
+	.has_uart0			= 1,
+	.has_pci			= 1,
+	.has_ohci0			= 1,
+	.has_ehci0			= 1,
+
+	.has_caldata		= 1,
+	.caldata = {
+		{
+			.vendor			= PCI_VENDOR_ID_RALINK,
+			.caldata_offset	= 0xfa0000,
+			.slot			= 1,
+			.eeprom			= "rt2x00.eeprom",
+		},
+	},
+
+	.has_enetsw			= 1,
+	.enetsw = {
+		.used_ports = {
+			[0] = {
+				.used		= 1,
+				.phy_id		= 1,
+				.name		= "port1",
+			},
+			[1] = {
+				.used		= 1,
+				.phy_id		= 2,
+				.name		= "port2",
+			},
+			[2] = {
+				.used		= 1,
+				.phy_id		= 3,
+				.name		= "port3",
+			},
+			[3] = {
+				.used		= 1,
+				.phy_id		= 4,
+				.name		= "port4",
+			},
+		},
+	},
+
+	.leds = {
+		{
+			.name		= "HG622:green:adsl",
+			.gpio		= 2,
+		},
+		{
+			.name		= "HG622:green:inet",
+			.gpio		= 5,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HG622:green:power",
+			.gpio		= 22,
+			.default_trigger = "default-on",
+			.active_low	= 1,
+		},
+		{
+			.name		= "HG622:green:usb",
+			.gpio		= 11,
+			.active_low	= 1,
+		},
+	},
+
+	.buttons = {
+		{
+			.desc           = "reset",
+			.gpio			= 34,
+			.type			= EV_KEY,
+			.code			= KEY_RESTART,
+			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+			.active_low		= 1,
+		},
+	},
+};
+
 static struct board_info __initdata board_VR3025u = {
 	.name					= "96368M-1541N",
 	.expected_cpu_id		= 0x6368,
@@ -5085,6 +5165,7 @@ static const struct board_info __initconst *bcm963xx_boards[] = {
 #ifdef CONFIG_BCM63XX_CPU_6368
 	&board_96368mvwg,
 	&board_96368mvngr,
+	&board_HG622,
 	&board_VR3025u,
 	&board_VR3025un,
 	&board_WAP5813n,
