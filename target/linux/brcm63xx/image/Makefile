@@ -162,140 +162,320 @@ define Image/Build/Initramfs
 	$(call Image/Build/HCS,initramfs,cvg834g,a020,0001,0022,$(KDIR)/vmlinux-initramfs)
 endef
 
-define Image/Build
-	dd if=$(KDIR)/root.$(1) of=$(BIN_DIR)/$(IMG_PREFIX)-root.$(1) bs=128k conv=sync
-	# Various routers
-	$(call Image/Build/CFE,$(1),96328avng,6328,96328avng-4M-flash-generic,,--pad 2)
-	$(call Image/Build/CFE,$(1),96328avng,6328,96328avng-8M-flash-generic,,--pad 4)
-	$(call Image/Build/CFE,$(1),96328avng,6328,96328avng-16M-flash-generic,,--pad 8)
-	$(call Image/Build/CFE,$(1),96328A-1241N,6328,96328A-1241N-generic,,--pad 8)
-	$(call Image/Build/CFE,$(1),96328A-1441N1,6328,96328A-1441N1-generic,,--pad 8)
-	$(call Image/Build/CFE,$(1),963281TAN,6328,963281TAN-4M-flash-generic,,--pad 2)
-	$(call Image/Build/CFE,$(1),963281TAN,6328,963281TAN-8M-flash-generic,,--pad 4)
-	$(call Image/Build/CFE,$(1),963281TAN,6328,963281TAN-16M-flash-generic,,--pad 8)
-	$(call Image/Build/CFE,$(1),963281T_TEF,6328,963281T_TEF-generic,,--pad 8)
-	$(call Image/Build/CFE,$(1),96345GW2,6345,96345GW2-generic)
-	$(call Image/Build/CFE,$(1),96345GW2,6345,96348GW2-bc221,,--layoutver 5)
-	$(call Image/Build/CFE,$(1),96345GW2,6345,92345GW2-rev,OpenWRT-$(REVISION))
-	$(call Image/Build/CFE,$(1),96348GW,6348,96348GW-generic,,)
-	$(call Image/Build/CFE,$(1),96348R,6348,96348R-generic,,)
-	$(call Image/Build/CFE,$(1),96348GW,6348,96348GW-bc221,,--layoutver 5)
-	$(call Image/Build/CFE,$(1),6338GW,6338,6338GW-generic,,)
-	$(call Image/Build/CFE,$(1),6338W,6338,6338W-generic,,)
-	$(call Image/Build/CFE,$(1),96348GW-11,6348,96348GW-11-generic)
-	$(call Image/Build/CFE,$(1),96348GW-10,6348,96348GW-10-generic)
-	$(call Image/Build/CFE,$(1),96348A-122,6348,96348A-122-generic)
-	$(call Image/Build/CFE,$(1),96358VW,6358,96358VW-generic)
-	$(call Image/Build/CFE,$(1),96358VW2,6358,96358VW2-generic)
-	$(call Image/Build/CFE,$(1),96368MVNgr,6368,96368MVNgr-generic)
-	$(call Image/Build/CFE,$(1),96368MVWG,6368,96368MVWG-generic)
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm3368),y)
+  # Netgear CVG834G
+  define Image/Build/Profile/CVG834G
+	$(call Image/Build/HCS,$(1),cvg834g,a020,0001,0022,$(KDIR)/vmlinux)
+  endef
+endif
 
-	# Asmax AR 1004g
-	$(call Image/Build/CFEFIXUP,$(1),96348GW-10,AR1004G,6348,AR1004G)
-	# BT Voyager V210_BTR
-	$(call Image/Build/CFE,$(1),V210_BB,6348,BTV210_BTR,,--layoutver 5)
-	# BT Voyager V210_ROI, V210_WB
-	$(call Image/Build/CFE,$(1),V210,6348,BTV210_ROI_WB,,--layoutver 5)
-	# BT Voyager V2091_BTR
-	$(call Image/Build/CFE,$(1),V2091_BB,6348,BTV2091_BTR,,--layoutver 5)
-	# BT Voyager V2091_ROI, V2091_WB
-	$(call Image/Build/CFE,$(1),V2091,6348,BTV2091_ROI_WB,,--layoutver 5)
-	# BT Voyager V220V, V220V_MGCP_BTR
-	$(call Image/Build/CFE,$(1),RTA1052V,6348,BTV220V_MGCP_BTR,,--layoutver 5)
-	# BT Voyager V2110, V2110_AA, V2110_ROI
-	$(call Image/Build/CFE,$(1),V2110,6348,BTV2110,,--layoutver 5)
-	# BT Voyager V2500V, V2500V_SIP_CLUB, V2500V_AA
-	$(call Image/Build/CFE,$(1),V2500V_BB,6348,BTV2500V,,--layoutver 5)
-	# RTA1025W_16 (numerous routers)
-	$(call Image/Build/CFE,$(1),RTA1025W_16,6348,RTA1025W_16,,--layoutver 5)
-	# RTA1320_16M (numerous routers)
-	$(call Image/Build/CFE,$(1),RTA1320_16M,6338,RTA1320_16M,,--layoutver 5)
-	# Tecom GW6000
-	$(call Image/Build/CFEFIXUP,$(1),96348GW,GW6000,6348,GW6000)
-	# Tecom GW6200
-	$(call Image/Build/CFEFIXUP,$(1),96348GW,GW6200,6348,GW6200,$(shell printf '\x99'))
-	# Neufbox4
-	$(call Image/Build/CFE,$(1),96358VW,6358,NEUFBOX4,OpenWRT-$(REVISION))
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6318),y)
+  # Generic
+  define Image/Build/Profile/96318REF
+	$(call Image/Build/CFE,$(1),96318REF,6318,96318REF-generic)
+  endef
+  define Image/Build/Profile/96318REF_P300
+	$(call Image/Build/CFE,$(1),96318REF_P300,6318,96318REF_P300-generic)
+  endef
+endif
 
-	# Neufbox6
-	$(call Image/Build/CFE,$(1),NB6-SER-r0,6362,NEUFBOX6,OpenWRT-$(REVISION))
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm63268),y)
+  # Generic
+  define Image/Build/Profile/963268BU_P300
+	$(call Image/Build/CFE,$(1),963268BU_P300,63268,963268BU_P300-generic)
+  endef
+  define Image/Build/Profile/963269BHR
+	$(call Image/Build/CFE,$(1),963269BHR,63268,963269BHR-generic)
+  endef
 
-	# Sagem F@ST2504n
-	$(call Image/Build/CFE,$(1),F@ST2504n,6362,F@ST2504n,OpenWRT-$(REVISION))
+  # Ayecom VW6339GU
+  define Image/Build/Profile/VW6339GU
+	$(call Image/Build/CFE,$(1),VW6339GU,63268,VW6339GU-generic)
+  endef
+endif
 
-	# Comtrend 6373
-	$(call Image/Build/CFE,$(1),CT6373-1,6358,CT6373)
-	# Comtrend 536, 5621
-	$(call Image/Build/CFEFIXUP,$(1),96348GW-11,CT536_CT5621,6348,CT536_CT5621)
-	# Davolink DV201AMR
-	$(call Image/Build/CFEOLD,$(1),DV201AMR,6348)
-	# USR 9108
-	$(call Image/Build/CFE,$(1),96348GW-A,6348,USR9108)
-	# NetGear DG834GT, DG834PN
-	$(call Image/Build/CFE,$(1),96348GW-10,6348,DG834GT_DG834PN)
-	# Belkin f5d7633
-	$(call Image/Build/CFE,$(1),96348GW-10,6348,F5D7633)
-	# D-Link DSL-2640B, rev B2
-	$(call Image/Build/CFE,$(1),D-4P-W,6348,DSL2640B-B2)
-	# D-Link DSL-2650U
-	$(call Image/Build/CFE,$(1),96358VW2,6358,DSL2650U)
-	# D-Link DSL-2740B/DSL-2741B, rev C2
-	$(call Image/Build/CFEFIXUP,$(1),96358GW,AW4139,6358,DSL274XB-C2)
-	# D-Link DSL-2740B/DSL-2741B, rev C3
-	$(call Image/Build/CFE,$(1),AW4139,6358,DSL274XB-C3)
-	# D-Link DSL-2740B/DSL-2741B, rev F1
-	$(call Image/Build/CFE,$(1),AW4339U,6328,DSL274XB-F1-EU,,--signature2="4.06.01.EUF1" --pad 4)
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6328),y)
+  # Generic
+  define Image/Build/Profile/96328AVNG
+	$(call Image/Build/CFE,$(1),96328avng,6328,96328avng-4M-generic,,--pad 2)
+	$(call Image/Build/CFE,$(1),96328avng,6328,96328avng-8M-generic,,--pad 4)
+	$(call Image/Build/CFE,$(1),96328avng,6328,96328avng-16M-generic,,--pad 8)
+  endef
+  define Image/Build/Profile/963281TAN
+	$(call Image/Build/CFE,$(1),963281TAN,6328,963281TAN-4M-generic,,--pad 2)
+	$(call Image/Build/CFE,$(1),963281TAN,6328,963281TAN-8M-generic,,--pad 4)
+	$(call Image/Build/CFE,$(1),963281TAN,6328,963281TAN-16M-generic,,--pad 8)
+  endef
+
+  # ADB P.DG A4001N
+  define Image/Build/Profile/PDGA4001N
+	$(call Image/Build/CFE,$(1),963281T_TEF,6328,PDG-A4001N,,--pad 8)
+  endef
+
+  # Comtrend AR-5381u
+  define Image/Build/Profile/AR5381U
+	$(call Image/Build/CFE,$(1),96328A-1241N,6328,AR-5381u,,--pad 8)
+  endef
+  # Comtrend AR-5387un
+  define Image/Build/Profile/AR5387UN
+	$(call Image/Build/CFE,$(1),96328A-1441N1,6328,AR-5387un,,--pad 8)
+  endef
+
+  # D-Link DSL-2740B/DSL-2741B rev F1
+  define Image/Build/Profile/DSL274XB
 	$(call Image/Build/CFE,$(1),AW4339U,6328,DSL274XB-F1-AU,,--signature2="4.06.01.AUF1" --pad 4)
-	# D-Link DVA-G3810BN/TL
-	$(call Image/Build/CFEFIXUP,$(1),96358VW,DVAG3810BN,6358,DVAG3810BN)
+	$(call Image/Build/CFE,$(1),AW4339U,6328,DSL274XB-F1-EU,,--signature2="4.06.01.EUF1" --pad 4)
+  endef
 
-	# TP-Link TD-8810A, TD-8810B, TD-8811A, TD-8811B
-	$(call Image/Build/CFE,$(1),8L-2M-8M,6338,TP8810_8811)
-	# TP-Link 8900GB
-	$(call Image/Build/CFE,$(1),96348GW-11,6348,TD8900GB,$(shell printf 'PRID\x89\x10\x00\x02'))
-
-	# Sagem F@ST2404
-	$(call Image/Build/CFE,$(1),F@ST2404,6348,F@ST2404-cfe)
-	$(call Image/Build/CFE,$(1),F@ST2404,6348,F@ST2404,OpenWRT-$(REVISION))
-	# Sagem F@ST2604
-	$(call Image/Build/CFE,$(1),F@ST2604,6348,F@ST2604-cfe)
-	$(call Image/Build/CFE,$(1),F@ST2604,6348,F@ST2604,OpenWRT-$(REVISION))
-	# Sagem F@ST2704V2
+  # Sagem F@ST2704 v2
+  define Image/Build/Profile/FAST2704V2
 	$(call Image/Build/CFE,$(1),F@ST2704V2,6328,F@ST2704V2-cfe)
 	$(call Image/Build/CFE,$(1),F@ST2704V2,6328,F@ST2704V2,OpenWRT-$(REVISION))
-	# Inventel Livebox
-	$(call Image/Build/RedBoot,livebox)
-	# Pirelli Alice Gate VoIP 2 Plus Wi-Fi AGPF-S0
+  endef
+endif
+
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6338),y)
+  # Generic
+  define Image/Build/Profile/6338GW
+	$(call Image/Build/CFE,$(1),6338GW,6338,6338GW-generic,,)
+  endef
+  define Image/Build/Profile/6338W
+	$(call Image/Build/CFE,$(1),6338W,6338,6338W-generic,,)
+  endef
+  define Image/Build/Profile/RTA1320_16M
+	$(call Image/Build/CFE,$(1),RTA1320_16M,6338,RTA1320_16M,,--layoutver 5)
+  endef
+
+  # TP-Link TD-8810A, TD-8810B, TD-8811A, TD-8811B
+  define Image/Build/Profile/8L2M8M
+	$(call Image/Build/CFE,$(1),8L-2M-8M,6338,TL-8810_8811)
+  endef
+endif
+
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6345),y)
+  # Generic
+  define Image/Build/Profile/96345GW2
+	$(call Image/Build/CFE,$(1),96345GW2,6345,96345GW2-generic)
+	$(call Image/Build/CFE,$(1),96345GW2,6345,96345GW2-bc221,,--layoutver 5)
+	$(call Image/Build/CFE,$(1),96345GW2,6345,92345GW2-rev,OpenWRT-$(REVISION))
+  endef
+endif
+
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6348),y)
+  # Generic
+  define Image/Build/Profile/96348GW
+	$(call Image/Build/CFE,$(1),96348GW,6348,96348GW-generic,,)
+	$(call Image/Build/CFE,$(1),96348GW,6348,96348GW-bc221,,--layoutver 5)
+  endef
+  define Image/Build/Profile/96348GW10
+    $(call Image/Build/CFE,$(1),96348GW-10,6348,96348GW-10-generic)
+  endef
+  define Image/Build/Profile/96348GW11
+	$(call Image/Build/CFE,$(1),96348GW-11,6348,96348GW-11-generic)
+  endef
+  define Image/Build/Profile/96348R
+	$(call Image/Build/CFE,$(1),96348R,6348,96348R-generic,,)
+  endef
+  define Image/Build/Profile/RTA1025W_16
+	$(call Image/Build/CFE,$(1),RTA1025W_16,6348,RTA1025W_16,,--layoutver 5)
+  endef
+
+  # Asmax AR1004G
+  define Image/Build/Profile/AR1004G
+	$(call Image/Build/CFEFIXUP,$(1),96348GW-10,AR1004G,6348,AR1004G)
+  endef
+
+  # Belkin F5D7633
+  define Image/Build/Profile/F5D7633
+	$(call Image/Build/CFE,$(1),96348GW-10,6348,F5D7633)
+  endef
+
+  # BT Voyager V210_BTR
+  define Image/Build/Profile/V210_BB
+	$(call Image/Build/CFE,$(1),V210_BB,6348,BTV210_BTR,,--layoutver 5)
+  endef
+  # BT Voyager V210_ROI, V210_WB
+  define Image/Build/Profile/V210
+	$(call Image/Build/CFE,$(1),V210,6348,BTV210_ROI_WB,,--layoutver 5)
+  endef
+  # BT Voyager V2091_BTR
+  define Image/Build/Profile/V2091_BB
+	$(call Image/Build/CFE,$(1),V2091_BB,6348,BTV2091_BTR,,--layoutver 5)
+  endef
+  # BT Voyager V2091_ROI, V2091_WB
+  define Image/Build/Profile/V2091
+	$(call Image/Build/CFE,$(1),V2091,6348,BTV2091_ROI_WB,,--layoutver 5)
+  endef
+  # BT Voyager V220V, V220V_MGCP_BTR
+  define Image/Build/Profile/RTA1052V
+	$(call Image/Build/CFE,$(1),RTA1052V,6348,BTV220V_MGCP_BTR,,--layoutver 5)
+  endef
+  # BT Voyager V2110, V2110_AA, V2110_ROI
+  define Image/Build/Profile/V2110
+	$(call Image/Build/CFE,$(1),V2110,6348,BTV2110,,--layoutver 5)
+  endef
+  # BT Voyager V2500V, V2500V_SIP_CLUB, V2500V_AA
+  define Image/Build/Profile/V2500V_BB
+	$(call Image/Build/CFE,$(1),V2500V_BB,6348,BTV2500V,,--layoutver 5)
+  endef
+
+  # Comtrend CT-536+, CT-5621
+  define Image/Build/Profile/CT536_CT5621
+	$(call Image/Build/CFEFIXUP,$(1),96348GW-11,CT536_CT5621,6348,CT536_CT5621)
+  endef
+  # Comtrend CT-5365
+  define Image/Build/Profile/CT5365
+	$(call Image/Build/CFE,$(1),96348A-122,6348,CT-5365)
+  endef
+
+  # Davolink DV201AMR
+  define Image/Build/Profile/DV201AMR
+	$(call Image/Build/CFEOLD,$(1),DV201AMR,6348)
+  endef
+
+  # D-Link DSL-2640B, rev B2
+  define Image/Build/Profile/DSL2640BB2
+	$(call Image/Build/CFE,$(1),D-4P-W,6348,DSL2640B-B2)
+  endef
+
+  # NetGear DG834GT, DG834PN
+  define Image/Build/Profile/DG834GT_DG834PN
+	$(call Image/Build/CFE,$(1),96348GW-10,6348,DG834GT_DG834PN)
+  endef
+
+  # Sagem F@ST2404
+  define Image/Build/Profile/FAST2404
+	$(call Image/Build/CFE,$(1),F@ST2404,6348,F@ST2404-cfe)
+	$(call Image/Build/CFE,$(1),F@ST2404,6348,F@ST2404,OpenWRT-$(REVISION))
+  endef
+  # Sagem F@ST2604
+  define Image/Build/Profile/FAST2604
+	$(call Image/Build/CFE,$(1),F@ST2604,6348,F@ST2604-cfe)
+	$(call Image/Build/CFE,$(1),F@ST2604,6348,F@ST2604,OpenWRT-$(REVISION))
+  endef
+
+  # T-Com SpeedPort W500V
+  define Image/Build/Profile/SPW500V
+	$(call Image/Build/CFEFIXUP,$(1),96348GW,SPW500V,6348,SPW500V)
+  endef
+
+  # Tecom GW6000
+  define Image/Build/Profile/GW6000
+	$(call Image/Build/CFEFIXUP,$(1),96348GW,GW6000,6348,GW6000)
+  endef
+  # Tecom GW6200
+  define Image/Build/Profile/GW6200
+	$(call Image/Build/CFEFIXUP,$(1),96348GW,GW6200,6348,GW6200,$(shell printf '\x99'))
+  endef
+
+  # TP-Link 8900GB
+  define Image/Build/Profile/TL8900GB
+	$(call Image/Build/CFE,$(1),96348GW-11,6348,TL-8900GB,$(shell printf 'PRID\x89\x10\x00\x02'))
+  endef
+
+  # USR 9108
+  define Image/Build/Profile/USR9108
+	$(call Image/Build/CFE,$(1),96348GW-A,6348,USR9108)
+  endef
+endif
+
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6358),y)
+  # Generic
+  define Image/Build/Profile/96358VW
+	$(call Image/Build/CFE,$(1),96358VW,6358,96358VW-generic)
+  endef
+  define Image/Build/Profile/96358VW2
+	$(call Image/Build/CFE,$(1),96358VW2,6358,96358VW2-generic)
+  endef
+  define Image/Build/Profile/RG100A_DB120
+	$(call Image/Build/RG100A,$(1),96358VW2,6358,0x20000,RG100A_DB120)
+  endef
+
+  # Comtrend CT-6373
+  define Image/Build/Profile/CT6373
+	$(call Image/Build/CFE,$(1),CT6373-1,6358,CT-6373)
+  endef
+
+  # D-Link DSL-2650U
+  define Image/Build/Profile/DSL2650U
+	$(call Image/Build/CFE,$(1),96358VW2,6358,DSL-2650U)
+  endef
+  # D-Link DSL-2740B/DSL-2741B rev C2
+  define Image/Build/Profile/DSL274XBC2
+	$(call Image/Build/CFEFIXUP,$(1),96358GW,AW4139,6358,DSL274XB-C2)
+  endef
+  # D-Link DVA-G3810
+  define Image/Build/Profile/DVAG3810BN
+	$(call Image/Build/CFEFIXUP,$(1),96358VW,DVAG3810BN,6358,DVAG3810BN)
+  endef
+
+  # Huawei HG553
+  define Image/Build/Profile/HG553
+	$(call Image/Build/CFEHW553,$(1),HW553,6358,0x20000,HW553)
+  endef
+  # Huawei HG556a
+  define Image/Build/Profile/HG556
+	$(call Image/Build/CFEHW556,$(1),HW556,6358,0x20000,EchoLife_HG556a,OpenWRT-$(REVISION))
+  endef
+
+  # NeufBox 4
+  define Image/Build/Profile/NB4
+	$(call Image/Build/CFE,$(1),96358VW,6358,NB4,OpenWRT-$(REVISION))
+  endef
+
+  # Pirelli AGV2+W
+  define Image/Build/Profile/AGV2W
 	$(call Image/Build/CFEAGPF,$(1),AGPF-S0,6358,0x20000,AGV2+W-cfe)
 	$(call Image/Build/CFEAGPF,$(1),AGPF-S0,6358,0x20000,AGV2+W)
-	# Pirelli A226G
+  endef
+  # Pirelli A226G
+  define Image/Build/Profile/A226G
 	$(call Image/Build/CFEAGPF,$(1),DWV-S0,6358,0x10000,A226G-cfe)
 	$(call Image/Build/CFEAGPF,$(1),DWV-S0,6358,0x10000,A226G)
-
-	# Pirelli A226M
+  endef
+  # Pirelli A226M
+  define Image/Build/Profile/A226M
 	$(call Image/Build/CFEAGPF,$(1),DWV-S0,6358,0x20000,A226M-cfe)
 	$(call Image/Build/CFEAGPF,$(1),DWV-S0,6358,0x20000,A226M)
+  endef
 
-	# RG100A,DB120 etc.
-	$(call Image/Build/RG100A,$(1),96358VW2,6358,0x20000,RG100A_DB120)
+  # Sagem F@ST2504
+  define Image/Build/Profile/FAST2504
+	$(call Image/Build/CFE,$(1),F@ST2504n,6362,F@ST2504n,OpenWRT-$(REVISION))
+  endef
 
-	# Telsey CPVA642-type (e.g. CPA-ZNTE60T)
-	$(call Image/Build/CFE,$(1),CPVA642,6358,CPA-ZNTE60T,,--signature "Telsey Tlc",--signature2 "99.99.999",--second-image-flag "0")
-
-	# T-Com Speedport W 500V
-	$(call Image/Build/CFEFIXUP,$(1),96348GW,SPW500V,6348,SPW500V)
-
-	#HW553
-	$(call Image/Build/CFEHW553,$(1),HW553,6358,0x20000,HW553)
-
-	#HW556
-	$(call Image/Build/CFEHW556,$(1),HW556,6358,0x20000,EchoLife_HG556a,OpenWRT-$(REVISION))
-
-	# T-Com Speedport W 303V Typ B
+  # T-Com SpeedPort W303V
+  define Image/Build/Profile/SPW303V
 	$(call Image/Build/SPW303V,$(1),96358-502V,6358,SPW303V)
+  endef
 
-	# Netgear CVG834G
-	$(call Image/Build/HCS,$(1),cvg834g,a020,0001,0022,$(KDIR)/vmlinux)
+  # Telsey CPVA642
+  define Image/Build/Profile/CPVA642
+	$(call Image/Build/CFE,$(1),CPVA642,6358,CPA-ZNTE60T,,--signature "Telsey Tlc",--signature2 "99.99.999",--second-image-flag "0")
+  endef
+endif
+
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6362),y)
+  # NeufBox 6
+  define Image/Build/Profile/NB6
+	$(call Image/Build/CFE,$(1),NB6-SER-r0,6362,NEUFBOX6,OpenWRT-$(REVISION))
+  endef
+endif
+
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
+  # Generic
+  define Image/Build/Profile/96368MVNgr
+	$(call Image/Build/CFE,$(1),96368MVNgr,6368,96368MVNgr-generic)
+  endef
+  define Image/Build/Profile/96368MVWG
+	$(call Image/Build/CFE,$(1),96368MVWG,6368,96368MVWG-generic)
+  endef
+endif
+
+define Image/Build
+  dd if=$(KDIR)/root.$(1) of=$(BIN_DIR)/$(IMG_PREFIX)-root.$(1) bs=128k conv=sync
+
+  $(call Image/Build/Profile/$(PROFILE),$(1))
 
   ifeq ($(CONFIG_TARGET_ROOTFS_INITRAMFS),y)
 	$(call Image/Build/Initramfs)
