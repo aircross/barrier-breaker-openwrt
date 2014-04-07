@@ -27,6 +27,7 @@ case "$board_name" in
 	AW4339U |\
 	CPVA642 |\
 	CT6373-1 |\
+	DGND3700_3800B |\
 	MAGIC |\
 	V2110 |\
 	RTA770BW |\

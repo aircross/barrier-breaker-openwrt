@@ -168,6 +168,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"DGND3700_3800B")
+			board_model="Netgear DGND3700/DGND3800B"
+			status_led="DGND3700_3800B:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"DVAG3810BN")
 			board_model="DVAG3810BN"
 			status_led="DVAG3810BN::power"
