@@ -36,6 +36,7 @@
 #include <bcm63xx_dev_usb_ehci.h>
 #include <bcm63xx_dev_usb_ohci.h>
 #include <bcm63xx_dev_usb_usbd.h>
+#include <bcm63xx_sprom_bcma.h>
 #include <board_bcm963xx.h>
 #include <pci_ath9k_fixup.h>
 #include <pci_rt2x00_fixup.h>
@@ -5210,6 +5211,13 @@ int __init board_register_devices(void)
 	bcm63xx_spi_register();
 
 	bcm63xx_hsspi_register();
+
+#ifdef CONFIG_BCMA
+	if (!board.has_caldata &&
+		bcma_arch_register_fallback_sprom(
+		&bcm63xx_get_bcma_fallback_sprom) < 0)
+		pr_err(PFX "failed to register BCMA fallback SPROM\n");
+#endif
 
 	if (board.num_devs)
 		platform_add_devices(board.devs, board.num_devs);
