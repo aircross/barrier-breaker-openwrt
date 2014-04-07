@@ -157,12 +157,12 @@ define Image/Prepare
 	$(call prepare_generic_squashfs,$(KDIR)/fs_mark)
 endef
 
-define Image/Build/Initramfs
+ifeq ($(CONFIG_TARGET_brcm63xx_brcm3368),y)
+  define Image/Build/Initramfs
 	# Netgear CVG834G
 	$(call Image/Build/HCS,initramfs,cvg834g,a020,0001,0022,$(KDIR)/vmlinux-initramfs)
-endef
+  endef
 
-ifeq ($(CONFIG_TARGET_brcm63xx_brcm3368),y)
   # Netgear CVG834G
   define Image/Build/Profile/CVG834G
 	$(call Image/Build/HCS,$(1),cvg834g,a020,0001,0022,$(KDIR)/vmlinux)
