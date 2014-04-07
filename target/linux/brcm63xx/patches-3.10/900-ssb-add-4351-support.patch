@@ -1,0 +1,11 @@
+diff -uprN a/drivers/ssb/b43_pci_bridge.c b/drivers/ssb/b43_pci_bridge.c
+--- a/drivers/ssb/b43_pci_bridge.c	2014-02-08 17:21:26.505601657 +0100
++++ b/drivers/ssb/b43_pci_bridge.c	2014-02-08 17:22:13.907439090 +0100
+@@ -38,6 +38,7 @@ static const struct pci_device_id b43_pc
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_BROADCOM, 0x432b) },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_BROADCOM, 0x432c) },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_BROADCOM, 0x4350) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_BROADCOM, 0x4351) },
+ 	{ 0, },
+ };
+ MODULE_DEVICE_TABLE(pci, b43_pci_bridge_tbl);
