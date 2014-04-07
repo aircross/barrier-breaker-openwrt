@@ -1,3 +1,12 @@
+define Profile/HG520
+  NAME:=Huawei HG520v
+  PACKAGES:=kmod-b43 wpad-mini
+endef
+define Profile/HG520/Description
+	Package set for the HG520v
+endef
+$(eval $(call Profile,HG520))
+
 define Profile/HG553
   NAME:=Huawei HG553
   PACKAGES:=kmod-b43 kmod-usb-core kmod-usb-ohci kmod-usb2 wpad-mini

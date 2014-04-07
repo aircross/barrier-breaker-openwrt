@@ -69,6 +69,12 @@ HW556*)
 	ucidef_add_switch_vlan "eth0" "1" "0 1 2 3 4 5t"
 	;;
 
+HW6358GW_B)
+	ucidef_set_interface_lan "eth0.1"
+	ucidef_add_switch "eth0" "1" "1"
+	ucidef_add_switch_vlan "eth0" "1" "0 1 2 3 5t"
+	;;
+
 NB4-* |\
 DVG3810BN)
 	ucidef_set_interfaces_lan_wan "eth1.1" "eth0"

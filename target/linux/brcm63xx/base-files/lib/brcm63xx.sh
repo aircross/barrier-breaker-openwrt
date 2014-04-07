@@ -234,6 +234,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"HW6358GW_B")
+			board_model="Huawei HG520v"
+			status_led="HW520:green:net"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"NB6")
 			board_model="NB6"
 			brcm63xx_has_reset_button="true"

@@ -409,6 +409,10 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6358),y)
 	$(call Image/Build/CFEFIXUP,$(1),96358VW,DVAG3810BN,6358,DVAG3810BN)
   endef
 
+  # Huawei HG520v
+  define Image/Build/Profile/HG520
+	$(call Image/Build/CFE,$(1),HW6358GW_B,6358,HG520v)
+  endef
   # Huawei HG553
   define Image/Build/Profile/HG553
 	$(call Image/Build/CFEHW553,$(1),HW553,6358,0x20000,HW553)
