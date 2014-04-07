@@ -790,6 +790,122 @@ static struct board_info __initdata board_dsl_274xb_f1 = {
 		},
 	},
 };
+
+static struct board_info __initdata board_FAST2704V2 = {
+	.name				= "F@ST2704V2",
+	.expected_cpu_id		= 0x6328,
+
+	.has_uart0			= 1,
+	.has_pci			= 1,
+	.has_ohci0			= 1,
+	.has_ehci0			= 1,
+	.has_usbd			= 1,
+
+	.has_enetsw			= 1,
+
+	.enetsw = {
+		.used_ports = {
+			[0] = {
+				.used	= 1,
+				.phy_id = 1,
+				.name	= "Port 1",
+			},
+			[1] = {
+				.used	= 1,
+				.phy_id	= 2,
+				.name	= "Port 2",
+			},
+			[2] = {
+				.used	= 1,
+				.phy_id	= 3,
+				.name	= "Port 3",
+			},
+			[3] = {
+				.used	= 1,
+				.phy_id	= 4,
+				.name	= "Port 4",
+			},
+		},
+	},
+
+	.leds = {
+		/* front LEDs */
+		{
+			.name			= "F@ST2704V2:green:power",
+			.gpio			= 4,
+			.active_low		= 1,
+			.default_trigger	= "default-on",
+		},
+		{
+			.name			= "F@ST2704V2:red:power",
+			.gpio			= 5,
+			.active_low		= 1,
+		},
+		{
+			.name			= "F@ST2704V2:red:inet",
+			.gpio			= 2,
+			.active_low		= 1,
+		},
+		{
+			.name			= "F@ST2704V2:green:dsl",
+			.gpio			= 3,
+			.active_low		= 1,
+		},
+		{
+			.name			= "F@ST2704V2:green:inet",
+			.gpio			= 11,
+			.active_low		= 1,
+		},
+		{
+			.name			= "F@ST2704V2:green:usb",
+			.gpio			= 1,
+			.active_low		= 1,
+		},
+
+		/* side button LEDs */
+		{
+			.name			= "F@ST2704V2:green:wps",
+			.gpio			= 10,
+			.active_low		= 1,
+		},
+
+		/* FIXME: can't control gpio0 line in "out" state, needs further investigation */
+		/*
+		{
+			.name			= "F@ST2704V2:green:rfkill",
+			.gpio			= 0,
+			.active_low		= 1,
+		},
+		*/
+
+	},
+	.buttons = {
+		{
+			.desc			= "reset",
+			.gpio			= 23,
+			.active_low		= 1,
+			.type			= EV_KEY,
+			.code			= KEY_RESTART,
+			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+		{
+			.desc			= "wps",
+			.gpio			= 24,
+			.active_low		= 1,
+			.type			= EV_KEY,
+			.code			= KEY_WPS_BUTTON,
+			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+		{
+			.desc			= "rfkill",
+			.gpio			= 15,
+			.active_low		= 1,
+			.type			= EV_KEY,
+			.code			= KEY_WLAN,
+			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+		},
+	},
+};
 #endif
 
 /*
@@ -1670,122 +1786,6 @@ static struct board_info __initdata board_FAST2604 = {
 			.active_low			= 1,
 			.type				= EV_KEY,
 			.code				= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-	},
-};
-
-static struct board_info __initdata board_FAST2704V2 = {
-	.name				= "F@ST2704V2",
-	.expected_cpu_id		= 0x6328,
-
-	.has_uart0			= 1,
-	.has_pci			= 1,
-	.has_ohci0			= 1,
-	.has_ehci0			= 1,
-	.has_usbd			= 1,
-
-	.has_enetsw			= 1,
-
-	.enetsw = {
-		.used_ports = {
-			[0] = {
-				.used	= 1,
-				.phy_id = 1,
-				.name	= "Port 1",
-			},
-			[1] = {
-				.used	= 1,
-				.phy_id	= 2,
-				.name	= "Port 2",
-			},
-			[2] = {
-				.used	= 1,
-				.phy_id	= 3,
-				.name	= "Port 3",
-			},
-			[3] = {
-				.used	= 1,
-				.phy_id	= 4,
-				.name	= "Port 4",
-			},
-		},
-	},
-
-	.leds = {
-		/* front LEDs */
-		{
-			.name			= "F@ST2704V2:green:power",
-			.gpio			= 4,
-			.active_low		= 1,
-			.default_trigger	= "default-on",
-		},
-		{
-			.name			= "F@ST2704V2:red:power",
-			.gpio			= 5,
-			.active_low		= 1,
-		},
-		{
-			.name			= "F@ST2704V2:red:inet",
-			.gpio			= 2,
-			.active_low		= 1,
-		},
-		{
-			.name			= "F@ST2704V2:green:dsl",
-			.gpio			= 3,
-			.active_low		= 1,
-		},
-		{
-			.name			= "F@ST2704V2:green:inet",
-			.gpio			= 11,
-			.active_low		= 1,
-		},
-		{
-			.name			= "F@ST2704V2:green:usb",
-			.gpio			= 1,
-			.active_low		= 1,
-		},
-
-		/* side button LEDs */
-		{
-			.name			= "F@ST2704V2:green:wps",
-			.gpio			= 10,
-			.active_low		= 1,
-		},
-
-		/* FIXME: can't control gpio0 line in "out" state, needs further investigation */
-		/*
-		{
-			.name			= "F@ST2704V2:green:rfkill",
-			.gpio			= 0,
-			.active_low		= 1,
-		},
-		*/
-
-	},
-	.buttons = {
-		{
-			.desc			= "reset",
-			.gpio			= 23,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_RESTART,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "wps",
-			.gpio			= 24,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WPS_BUTTON,
-			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
-		},
-		{
-			.desc			= "rfkill",
-			.gpio			= 15,
-			.active_low		= 1,
-			.type			= EV_KEY,
-			.code			= KEY_WLAN,
 			.debounce_interval	= BCM963XX_KEYS_DEBOUNCE_INTERVAL,
 		},
 	},
