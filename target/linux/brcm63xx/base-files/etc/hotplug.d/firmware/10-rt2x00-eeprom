@@ -34,7 +34,8 @@ case "$FIRMWARE" in
 	HW556_A)
 		rt2x00_eeprom_extract "cal_data" 130560 512
 		;;
-	96368MVWG_hg622)
+	96368MVWG_hg622 |\
+	HW65x)
 		rt2x00_eeprom_extract "cal_data" 0 512
 		;;
 	*)

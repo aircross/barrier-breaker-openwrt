@@ -60,6 +60,15 @@ define Image/Build/CFEHW553
 		--block-size 0x20000 --image-offset $(4)
 endef
 
+define Image/Build/CFEHW65x
+	# Generate the tagged image
+	$(STAGING_DIR_HOST)/bin/imagetag -i $(KDIR)/vmlinux.lzma.cfe -f $(KDIR)/root.$(1) \
+		--output $(BIN_DIR)/openwrt-$(5)-$(1)-cfe.bin \
+		--boardid $(2) --chipid $(3) --entry $(LOADADDR) \
+		--load-addr $(LOADADDR) --tag-version 7 \
+		--block-size 0x10000 --image-offset $(4) $(6)
+endef
+
 define Image/Build/CFEHW556
 	# Generate the tagged image
 	$(STAGING_DIR_HOST)/bin/imagetag -i $(KDIR)/vmlinux.lzma.cfe -f $(KDIR)/root.$(1) \
@@ -491,6 +500,11 @@ ifeq ($(CONFIG_TARGET_brcm63xx_brcm6368),y)
   # Huawei HG622
   define Image/Build/Profile/HG622
 	$(call Image/Build/CFE,$(1),96368MVWG_hg622,6368,HG622,,--pad 4)
+  endef
+
+  # Huawei HG655b/d
+  define Image/Build/Profile/HG655x
+	$(call Image/Build/CFEHW65x,$(1),HW65x,6368,0x20000,HG655x,--pad 4)
   endef
 
   # Netgear DGND3700/DGND3800B DGND3700_3800B

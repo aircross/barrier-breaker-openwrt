@@ -120,6 +120,12 @@ brcm63xx_detect() {
 			brcm63xx_has_reset_button="true"
 			ifname="eth0"
 			;;
+		"HW65x")
+			board_model="Huawei HG655x"
+			status_led="HW65x:green:power"
+			brcm63xx_has_reset_button="true"
+			ifname="eth0"
+			;;
 		"96369R-1231N")
 			board_model="Comtrend WAP-5813n"
 			status_led="WAP-5813n:green:power"

@@ -4717,6 +4717,126 @@ static struct board_info __initdata board_HG622 = {
 	},
 };
 
+static struct board_info __initdata board_HG655b = {
+	.name				= "HW65x",
+	.expected_cpu_id	= 0x6368,
+
+	.has_uart0			= 1,
+	.has_pci			= 1,
+	.has_ohci0			= 1,
+	.has_ehci0			= 1,
+	.num_usbh_ports			= 2,
+
+	.has_caldata			= 1,
+	.caldata = {
+		{
+			.vendor			= PCI_VENDOR_ID_RALINK,
+			.caldata_offset		= 0x7c0000,
+			.slot			= 1,
+			.eeprom			= "rt2x00.eeprom",
+		},
+	},
+
+	.has_enetsw			= 1,
+	.enetsw = {
+		.used_ports = {
+			[0] = {
+				.used		= 1,
+				.phy_id		= 1,
+				.name		= "port1",
+			},
+			[1] = {
+				.used		= 1,
+				.phy_id		= 2,
+				.name		= "port2",
+			},
+			[2] = {
+				.used		= 1,
+				.phy_id		= 3,
+				.name		= "port3",
+			},
+			[3] = {
+				.used		= 1,
+				.phy_id		= 4,
+				.name		= "port4",
+			},
+		},
+	},
+
+	.leds = {
+		{
+			.name		= "HW65x:green:dsl",
+			.gpio		= 2,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:inet",
+			.gpio		= 5,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:lan1",
+			.gpio		= 6,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:lan2",
+			.gpio		= 7,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:lan3",
+			.gpio		= 8,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:lan4",
+			.gpio		= 9,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:usb",
+			.gpio		= 14,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:power",
+			.gpio		= 22,
+			.default_trigger = "default-on",
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:voip",
+			.gpio		= 25,
+			.active_low	= 1,
+		},
+		{
+			.name		= "HW65x:green:wps",
+			.gpio		= 27,
+			.active_low	= 1,
+		},
+	},
+
+	.buttons = {
+		{
+			.desc           = "reset",
+			.gpio			= 34,
+			.type			= EV_KEY,
+			.code			= KEY_RESTART,
+			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+			.active_low		= 1,
+		},
+		{
+			.desc           = "wps",
+			.gpio			= 12,
+			.type			= EV_KEY,
+			.code			= KEY_WPS_BUTTON,
+			.debounce_interval = BCM963XX_KEYS_DEBOUNCE_INTERVAL,
+			.active_low		= 1,
+		},
+	},
+};
+
 static struct board_info __initdata board_P870HW51A_V2 = {
 	.name				= "P870HW-51a_v2",
 	.expected_cpu_id		= 0x6368,
@@ -5422,6 +5542,7 @@ static const struct board_info __initconst *bcm963xx_boards[] = {
 	&board_96368mvngr,
 	&board_DGND3700_3800B,
 	&board_HG622,
+	&board_HG655b,
 	&board_P870HW51A_V2,
 	&board_VR3025u,
 	&board_VR3025un,

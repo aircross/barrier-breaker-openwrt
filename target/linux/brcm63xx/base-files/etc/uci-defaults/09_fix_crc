@@ -22,6 +22,7 @@ case "$board_name" in
 	96368M-1341N |\
 	96368M-1541N |\
 	96368MVWG_hg622 |\
+	HW65x |\
 	96369R-1231N |\
 	"CPVA502+" |\
 	AW4339U |\
