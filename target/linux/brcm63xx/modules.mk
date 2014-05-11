@@ -35,3 +35,28 @@ define KernelPackage/bcm63xx-udc/description
 endef
 
 $(eval $(call KernelPackage,bcm63xx-udc))
+
+define KernelPackage/bcm63xx-smp
+  SUBMENU:=SMP Support
+  TITLE:=Broadcom BCM63xx SMP support
+  DEPENDS:=@(TARGET_brcm63xx_brcm6318||TARGET_brcm63xx_brcm6328||TARGET_brcm63xx_brcm6362||TARGET_brcm63xx_brcm6368||TARGET_brcm63xx_brcm63268)
+  KCONFIG:= \
+	CONFIG_CPU_RMAP=y \
+	CONFIG_MUTEX_SPIN_ON_OWNER=y \
+	CONFIG_NR_CPUS=2 \
+	CONFIG_RCU_STALL_COMMON=y \
+	CONFIG_RFS_ACCEL=y \
+	CONFIG_RPS=y \
+	CONFIG_SMP=y \
+	CONFIG_SMP_UP=y \
+	CONFIG_STOP_MACHINE=y \
+	CONFIG_TREE_RCU=y \
+	CONFIG_USE_GENERIC_SMP_HELPERS=y \
+	CONFIG_XPS=y
+endef
+
+define KernelPackage/bcm63xx-smp/description
+  Kernel support for SMP (Dual Core) on the BCM63xx SoC
+endef
+
+$(eval $(call KernelPackage,bcm63xx-smp))
