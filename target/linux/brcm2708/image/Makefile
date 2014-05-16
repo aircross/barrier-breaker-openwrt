@@ -10,11 +10,18 @@ include $(INCLUDE_DIR)/host.mk
 
 FAT32_BLOCK_SIZE=1024
 FAT32_BLOCKS=$(shell echo $$(($(CONFIG_BRCM2708_SD_BOOT_PARTSIZE)*1024*1024/$(FAT32_BLOCK_SIZE))))
+FAT32_SECTORS=$(shell echo $$((($(CONFIG_BRCM2708_SD_BOOT_PARTSIZE)*1024*1024/512)+1)))
 
 define Image/Build/RaspberryPi
-	rm -f $(KDIR)/boot.img
+	rm -f $(KDIR)/boot.img $(KDIR)/boot.dmg
 
+ifeq ($(HOST_OS),Darwin)
+	hdiutil create -sectors $(FAT32_SECTORS) -fs MS-DOS -o $(KDIR)/boot
+	dd if=$(KDIR)/boot.dmg of=$(KDIR)/boot.img bs=512 skip=1
+else
 	mkdosfs $(KDIR)/boot.img -C $(FAT32_BLOCKS)
+endif
+
 	# Raspberry Pi has no bootloader, instead the GPU loads and starts the kernel
 	mcopy -i $(KDIR)/boot.img $(BUILD_DIR)/brcm2708-gpu-fw-boot/bootcode.bin ::
 	mcopy -i $(KDIR)/boot.img $(BUILD_DIR)/brcm2708-gpu-fw-boot/COPYING.linux ::
