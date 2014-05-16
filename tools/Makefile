@@ -33,7 +33,10 @@ tools-$(CONFIG_TARGET_orion_generic) += wrt350nv2-builder upslug2
 tools-$(CONFIG_powerpc) += upx
 tools-$(CONFIG_TARGET_x86) += qemu
 tools-$(CONFIG_TARGET_mxs) += elftosb
-tools-$(CONFIG_TARGET_brcm2708) += mtools dosfstools
+tools-$(CONFIG_TARGET_brcm2708) += mtools
+ifneq ($(HOST_OS),Darwin)
+tools-$(CONFIG_TARGET_brcm2708) += dosfstools
+endif
 tools-$(CONFIG_TARGET_ar71xx) += lzma-old squashfs
 tools-y += lzma squashfs4
 tools-$(BUILD_B43_TOOLS) += b43-tools
